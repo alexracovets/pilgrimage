@@ -8,6 +8,7 @@ import Fade from 'embla-carousel-fade';
 import CustomArrow from "@/components/shared/customArrow";
 import { Price } from "@/components/shared/price";
 import { Button } from "@/components/ui/button";
+import useMainSlider from '@/store/useMainSlider';
 
 interface Slide {
     name: string;
@@ -23,12 +24,13 @@ interface Props {
 }
 
 export const TextSlider: React.FC<Props> = ({ slides }) => {
-    const [api, setApi] = useState<CarouselApi>();
+    const prevSlider = useMainSlider(state => state.prevSlider);
+    const [api, setApi] = useState<CarouselApi>(); 
 
     useEffect(() => {
         if (!api) return;
-        api.scrollNext();
-    }, [api]);
+        api.scrollTo(prevSlider);
+    }, [api, prevSlider])
 
     return (
         <Carousel className="w-[52rem]" setApi={setApi} plugins={[Fade()]}>
