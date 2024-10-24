@@ -9,6 +9,10 @@ const config: Config = {
 		"./app/**/*.{js,ts,jsx,tsx,mdx}",
 	],
 	theme: {
+		screens: {
+			'tablet': '1024px',
+			'mobile': '540px',
+		},
 		extend: {
 			fontFamily: {
 				'oswald': ["var(--font-oswald)"],

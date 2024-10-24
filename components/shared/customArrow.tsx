@@ -1,18 +1,21 @@
+import { cn } from '@/lib/utils';
 import React from 'react';
 
 interface ArrowSvgProps {
     color?: string;
-    width?: number;
-    height?: number;
     className?: string;
 }
 
-const customArrow: React.FC<ArrowSvgProps> = ({ color = 'white', width = 63, height = 16, className }) => {
+const customArrow: React.FC<ArrowSvgProps> = ({ color = 'white', className }) => {
     return (
-        <div className={className}>
+        <div className={cn(
+            'w-[6.3rem] h-[1.6rem]',
+            'max-tablet:w-[3rem] h-[1rem]',
+            className
+        )}>
             <svg
-                width={width}
-                height={height}
+                width={'100%'}
+                height={'100%'}
                 viewBox="0 0 63 16"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"

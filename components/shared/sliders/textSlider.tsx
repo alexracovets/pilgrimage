@@ -9,6 +9,7 @@ import CustomArrow from "@/components/shared/customArrow";
 import { Price } from "@/components/shared/price";
 import { Button } from "@/components/ui/button";
 import useMainSlider from '@/store/useMainSlider';
+import { cn } from '@/lib/utils';
 
 interface Slide {
     name: string;
@@ -25,7 +26,7 @@ interface Props {
 
 export const TextSlider: React.FC<Props> = ({ slides }) => {
     const prevSlider = useMainSlider(state => state.prevSlider);
-    const [api, setApi] = useState<CarouselApi>(); 
+    const [api, setApi] = useState<CarouselApi>();
 
     useEffect(() => {
         if (!api) return;
@@ -33,32 +34,65 @@ export const TextSlider: React.FC<Props> = ({ slides }) => {
     }, [api, prevSlider])
 
     return (
-        <Carousel className="w-[52rem]" setApi={setApi} plugins={[Fade()]}>
+        <Carousel className={cn(
+            'w-[52rem]',
+            'max-tablet:w-[33.2rem] max-tablet:mr-[2.2rem] max-tablet:mb-[5.8rem]'
+        )} setApi={setApi} plugins={[Fade()]}>
             <CarouselContent className='w-full'>
                 {
                     slides.map((item, index) => {
                         return (
-                            <CarouselItem key={index} className="flex flex-col w-[52rem] justify-start items-start">
-                                <div className="text-[2.6rem] text-regal-white mb-[1.8rem]">
+                            <CarouselItem key={index} className={cn(
+                                'flex flex-col w-full justify-start items-start'
+                            )}>
+                                <div className={cn(
+                                    'text-[2.6rem] text-regal-white mb-[1.8rem]',
+                                    'max-tablet:text-[1.2rem] max-tablet:mb-[.88rem]'
+                                )}>
                                     {item.tourName}
                                 </div>
-                                <div className="uppercase text-[10.8rem] tracking-[-.3rem] text-regal-white font-oswald font-[500] mb-[2.8rem]">
+                                <div className={cn(
+                                    'uppercase text-[10.8rem] tracking-[-.3rem] text-regal-white font-oswald font-[500] mb-[2.8rem]',
+                                    'max-tablet:text-[6.8rem] max-tablet:mb-[1.4rem]'
+                                )}>
                                     {item.country}
                                 </div>
-                                <div className="flex justify-start items-center mb-[2.8rem]">
-                                    <Price className="mr-[3.8rem]">
+                                <div className={cn(
+                                    'flex justify-start items-center mb-[2.8rem]',
+                                    'max-tablet:mb-[1.4rem]'
+                                )}>
+                                    <Price className={cn(
+                                        'mr-[3.8rem]',
+                                        'max-tablet:mr-[1.85rem] max-tablet:text-[1.2rem] max-tablet:p-0 max-tablet:w-[6.8rem] max-tablet:h-[2.4rem] max-tablet:flex max-tablet:justify-center max-tablet:items-center'
+                                    )}>
                                         {item.price}
                                     </Price>
-                                    <div className="flex justify-start items-center uppercase text-regal-white text-[1.8rem]">
-                                        <CalendarClock color="#fff" size={'2.2rem'} strokeWidth={'0.2rem'} className="mr-[1.4rem]" />
+                                    <div className={cn(
+                                        'flex justify-start items-center uppercase text-regal-white text-[1.8rem]',
+                                        'max-tablet:text-[1.2rem]'
+                                    )}>
+                                        <CalendarClock
+                                            color="#fff"
+                                            strokeWidth={'0.2rem'}
+                                            className={cn(
+                                                'w-[2.2rem] h-[2.2rem] mr-[1.4rem]',
+                                                'max-tablet:w-[1.4rem] max-tablet:h-[1.4rem] max-tablet:mr-[.7rem]'
+                                            )}
+                                        />
                                         {item.date}
                                     </div>
                                 </div>
-                                <div className="text-[1.6rem] text-regal-white leading-[2.08rem] mb-[2.8rem]">
+                                <div className={cn(
+                                    'text-[1.6rem] text-regal-white leading-[2.08rem] mb-[2.8rem]',
+                                    'max-tablet:text-[1rem] max-tablet:leading-[1.3rem] max-tablet:mb-[1.4rem]'
+                                )}>
                                     {item.description}
                                 </div>
                                 <Button variant='outline' className="flex justify-center items-center">
-                                    <CustomArrow className="mr-[1rem]" />
+                                    <CustomArrow className={cn(
+                                        'mr-[1rem]',
+                                        'max-tablet:mr-[.4rem]'
+                                    )} />
                                     <span className="text-regal-white">Детальніше</span>
                                 </Button>
                             </CarouselItem>

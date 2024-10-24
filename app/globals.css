@@ -18,14 +18,21 @@ body {
   }
 }
 
+
 html {
   scroll-behavior: smooth;
   font-size: calc(100vw / 1512 * 10);
 }
 
-@media (max-width: 767px) {
+@media (max-width: 1023px) {
   html {
-    font-size: calc(100vw / 430 * 10);
+    font-size: calc(100vw / 744 * 10);
+  }
+}
+
+@media (max-width: 539px) {
+  html {
+    font-size: calc(100vw / 320 * 10);
   }
 }
 
@@ -33,6 +40,10 @@ html {
   box-sizing: border-box;
   user-select: none;
   line-height: 1;
+}
+
+*:focus-visible {
+  outline: none;
 }
 
 body {

@@ -7,6 +7,12 @@ interface Props { className?: string; }
 
 export const Container: React.FC<React.PropsWithChildren<Props>> = ({ className, children }) => {
     return (
-        <div className={cn('mx-auto w-full px-[5rem]', className)}>{children}</div>
+        <div className={cn(
+            'mx-auto w-full px-[5rem]',
+            'px-[3rem]',
+            className)}
+        >
+            {children}
+        </div>
     );
 };

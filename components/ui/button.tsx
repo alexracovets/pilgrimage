@@ -5,14 +5,26 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-  "px-[3.8rem] py-[1rem] w-auto",
+  cn(
+    'px-[3.8rem] py-[1rem] w-auto',
+    'max-tablet:py-[.6rem] max-tablet:px-[2rem]'
+  ),
   {
     variants: {
       variant: {
-        default: "uppercase text-[2.4rem] bg-regal-orange rounded-[5rem]",
+        default: cn(
+          'uppercase text-[2.4rem] bg-regal-orange rounded-[5rem]',
+          'max-tablet:text-[1.2rem]'
+        ),
         destructive: "",
-        outline: "uppercase border-[0.1rem] rounded-[5rem] text-[2.4rem]",
-        outline_orange: "uppercase border-[0.1rem] rounded-[5rem] border-regal-orange text-[2.4rem]",
+        outline: cn(
+          'uppercase border-[0.1rem] rounded-[5rem] text-[2.4rem]',
+          'max-tablet:text-[1.2rem]'
+        ),
+        outline_orange: cn(
+          'uppercase border-[0.1rem] rounded-[5rem] border-regal-orange text-[2.4rem]',
+          'max-tablet:text-[1.2rem]'
+        ),
         secondary: "",
         ghost: "",
         link: "",
