@@ -8,19 +8,27 @@ import { CardSlider } from '@/components/shared/sliders/cardSlider';
 import { Container } from "@/components/shared/container";
 import { Section } from "@/components/shared/section";
 
-import dataTours from "@/data/dataTours"
+import useIsMobile from '@/store/useIsMobile';
+import dataTours from "@/data/dataTours";
 
 export default function MainSection() {
-
+  const isMobile = useIsMobile(state => state.isMobile);
+  
   return (
-    <Section className="h-[100dvh] m-0 max-tablet:m-0">
+    <Section className={cn(
+      'h-[100dvh] m-0 max-tablet:m-0',
+      'max-mobile:h-auto'
+    )}>
       <MainSlider slides={dataTours} />
       <Container className={cn(
         'flex justify-center items-end w-full h-full pt-[8rem] pb-[8rem]',
-        'max-tablet:pb-[3.6rem]'
+        'max-tablet:pb-[3.6rem]',
+        'max-mobile:pt-[37.142rem]'
       )}>
-        <div className="flex justify-between items-end w-full">
-          <TextSlider slides={dataTours} />
+        <div className={cn(
+          'flex justify-between items-end w-full'
+        )}>
+          {!isMobile ? <TextSlider slides={dataTours} /> : null}
           <CardSlider slides={dataTours} />
         </div>
       </Container>

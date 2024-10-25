@@ -36,7 +36,8 @@ export const TextSlider: React.FC<Props> = ({ slides }) => {
     return (
         <Carousel className={cn(
             'w-[52rem]',
-            'max-tablet:w-[33.2rem] max-tablet:mr-[2.2rem] max-tablet:mb-[5.8rem]'
+            'max-tablet:w-[33.2rem] max-tablet:mr-[2.2rem] max-tablet:mb-[5.8rem]',
+            'max-mobile:w-full max-mobile:m-0'
         )} setApi={setApi} plugins={[Fade()]}>
             <CarouselContent className='w-full'>
                 {
@@ -47,13 +48,15 @@ export const TextSlider: React.FC<Props> = ({ slides }) => {
                             )}>
                                 <div className={cn(
                                     'text-[2.6rem] text-regal-white mb-[1.8rem]',
-                                    'max-tablet:text-[1.2rem] max-tablet:mb-[.88rem]'
+                                    'max-tablet:text-[1.2rem] max-tablet:mb-[.88rem]',
+                                    'max-mobile:text-[1.4rem] max-mobile:mb-[.97rem]'
                                 )}>
                                     {item.tourName}
                                 </div>
                                 <div className={cn(
                                     'uppercase text-[10.8rem] tracking-[-.3rem] text-regal-white font-oswald font-[500] mb-[2.8rem]',
-                                    'max-tablet:text-[6.8rem] max-tablet:mb-[1.4rem]'
+                                    'max-tablet:text-[6.8rem] max-tablet:mb-[1.4rem]',
+                                    'max-mobile:text-[5.6rem] max-mobile:mb-[1.5rem] '
                                 )}>
                                     {item.country}
                                 </div>
@@ -63,7 +66,8 @@ export const TextSlider: React.FC<Props> = ({ slides }) => {
                                 )}>
                                     <Price className={cn(
                                         'mr-[3.8rem]',
-                                        'max-tablet:mr-[1.85rem] max-tablet:text-[1.2rem] max-tablet:p-0 max-tablet:w-[6.8rem] max-tablet:h-[2.4rem] max-tablet:flex max-tablet:justify-center max-tablet:items-center'
+                                        'max-tablet:mr-[1.85rem] max-tablet:text-[1.2rem] max-tablet:p-0 max-tablet:w-[6.8rem] max-tablet:h-[2.4rem] max-tablet:flex max-tablet:justify-center max-tablet:items-center',
+                                        'max-mobile:w-[7.9rem] max-mobile:h-[2.339rem] max-mobile:text-[1.4rem]'
                                     )}>
                                         {item.price}
                                     </Price>

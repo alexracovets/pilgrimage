@@ -1,8 +1,10 @@
 import { Oswald, IBM_Plex_Sans } from 'next/font/google';
 import type { Metadata } from "next";
 
+import { CheckIsMobile } from '@/tools/checkIsMobile';
 import { Header } from '@/components/shared/header';
 import { Footer } from '@/components/shared/footer';
+import { Scroll } from '@/components/shared/scroll';
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -25,7 +27,6 @@ const imb = IBM_Plex_Sans({
 })
 
 import "./globals.css";
-import { Scroll } from '@/components/shared/scroll';
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode; }>) {
   return (
     <html lang="ua">
@@ -36,6 +37,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             {children}
           </main>
           <Footer />
+          <CheckIsMobile />
         </Scroll>
       </body>
     </html>

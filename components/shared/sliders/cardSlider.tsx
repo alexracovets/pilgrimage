@@ -69,7 +69,8 @@ export const CardSlider: React.FC<Props> = ({ slides }) => {
     return (
         <div className={cn(
             'w-[79rem]',
-            'max-tablet:w-[45rem]'
+            'max-tablet:w-[45rem]', 
+            'max-mobile:w-[40.2rem]'
         )}>
             <Carousel setApi={setApi} className="w-full mb-[4.6rem]" opts={sliderOptions}>
                 <CarouselContent className='w-full'>
@@ -82,7 +83,8 @@ export const CardSlider: React.FC<Props> = ({ slides }) => {
                                 )}>
                                     <div className={cn(
                                         'relative w-[25.3rem] h-[40.7rem] rounded-[2rem] overflow-hidden py-[3.5rem] px-[3rem]',
-                                        'max-tablet:w-[21.2rem] max-tablet:h-[34.2rem] max-tablet:px-[2.6rem] max-tablet:py-[3rem]'
+                                        'max-tablet:w-[21.2rem] max-tablet:h-[34.2rem] max-tablet:px-[2.6rem] max-tablet:py-[3rem]',
+                                        'max-mobile:w-[19.1rem] max-mobile:h-[14.2rem]'
                                     )}>
                                         <Image src={`main/bg/${item.name}.jpg`} fill priority alt='bg' className="object-cover z-[-1]" />
                                         <hr className='w-[2rem] h-[.4rem] bg-regal-white mb-[1.6rem]' />
