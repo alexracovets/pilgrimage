@@ -43,7 +43,7 @@ export default function AfonMainSection() {
                         </span>
                     </div>
                     <div className={cn(
-                        'uppercase text-[13.8rem] tracking-[-.3rem] text-regal-white font-oswald font-[500] mb-[2.8rem]',
+                        'uppercase text-[10rem] tracking-[-.3rem] text-regal-white font-oswald font-[500] mb-[2.8rem]',
                         'max-tablet:text-[6.8rem] max-tablet:mb-[1.4rem]',
                         'max-mobile:text-[5.6rem] max-mobile:mb-[1.5rem] '
                     )}>
@@ -58,7 +58,7 @@ export default function AfonMainSection() {
                             'max-tablet:mr-[1.85rem] max-tablet:text-[1.2rem] max-tablet:p-0 max-tablet:w-[6.8rem] max-tablet:h-[2.4rem] max-tablet:flex max-tablet:justify-center max-tablet:items-center',
                             'max-mobile:w-[7.9rem] max-mobile:h-[2.339rem] max-mobile:text-[1.4rem]'
                         )}>
-                            Nan
+                            450 €
                         </Price>
                         <div className={cn(
                             'flex justify-start items-center uppercase text-regal-white text-[1.8rem]',

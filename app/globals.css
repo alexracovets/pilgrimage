@@ -62,3 +62,29 @@ button {
 .pointer-events-none {
   pointer-events: none !important;
 }
+
+.cost_list {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.cost_list li {
+  width: 100%;
+  position: relative;
+  padding-left: 40px;
+}
+
+.cost_list li::before {
+  content: '';
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 3px;
+  background-color: #000000;
+}
