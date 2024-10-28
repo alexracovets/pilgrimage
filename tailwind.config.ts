@@ -22,7 +22,8 @@ const config: Config = {
 				'regal-black': '#000000',
 				'regal-white': '#FFFFFF',
 				'regal-orange': '#FF6328',
-				'regal-gray': '#E9E9E9'
+				'regal-gray': '#E9E9E9',
+				'opacity-orange': '#ff632800'
 			},
 		}
 	},

@@ -89,7 +89,10 @@ export const Header: React.FC = () => {
                         )} style={underlineStyles}></div>
                     </nav>
                 </div>
-                <Hamburger toggled={isMobuleMenu} toggle={setIsMobuleMenu} color="#fff" size={18} />
+                <div className='hidden max-mobile:block cursor:pointer realative z-[10]'>
+                    <Hamburger toggled={isMobuleMenu} toggle={setIsMobuleMenu} color="#fff" size={18} />
+                </div>
+
                 <Drawer open={isMobuleMenu} onOpenChange={setIsMobuleMenu} direction='top'>
                     <DrawerContent className={cn(
                         ''

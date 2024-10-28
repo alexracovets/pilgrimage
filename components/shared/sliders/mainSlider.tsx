@@ -48,7 +48,7 @@ export const MainSlider: React.FC<Props> = ({ slides }) => {
                                 'relative left-0 top-0 w-full h-full',
                                 'max-mobile:pt-[10rem] max-mobile:px-[2rem]'
                             )}>
-                                <Image src={`main/bg/${item.name}.jpg`} fill priority alt='bg' className="object-cover" />
+                                <Image src={`/main/bg/${item.name}.jpg`} fill priority alt='bg' className="object-cover" />
                                 {isMobile ? <TextSlider slides={slides} /> : null}
                             </CarouselItem>
                         )

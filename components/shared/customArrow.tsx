@@ -9,8 +9,9 @@ interface ArrowSvgProps {
 const customArrow: React.FC<ArrowSvgProps> = ({ color = 'white', className }) => {
     return (
         <div className={cn(
-            'w-[6.3rem] h-[1.6rem]',
-            'max-tablet:w-[3rem] h-[1rem]',
+            'w-[6.3rem] h-[2rem] mr-[1rem]',
+            'max-tablet:w-[3rem] max-tablet:h-[1rem] max-tablet:mr-[.6rem]',
+            'max-mobile:w-[6.2rem] max-mobile:h-[2rem] max-mobile:mr-[1rem]',
             className
         )}>
             <svg

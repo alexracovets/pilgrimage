@@ -93,10 +93,7 @@ export const TextSlider: React.FC<Props> = ({ slides }) => {
                                     {item.description}
                                 </div>
                                 <Button variant='outline' className="flex justify-center items-center">
-                                    <CustomArrow className={cn(
-                                        'mr-[1rem]',
-                                        'max-tablet:mr-[.4rem]'
-                                    )} />
+                                    <CustomArrow />
                                     <span className="text-regal-white">Детальніше</span>
                                 </Button>
                             </CarouselItem>

@@ -19,7 +19,7 @@ const oswald = Oswald({
   display: 'swap',
 })
 const imb = IBM_Plex_Sans({
-  weight: ['400', '700'],
+  weight: ['400', '600', '700'],
   variable: '--font-imb',
   style: ['normal'],
   subsets: ['cyrillic'],

@@ -14,17 +14,20 @@ const Slider = React.forwardRef<
     className={cn(
       "relative flex w-full select-none items-center cursor-pointer",
       'max-tablet:w-[33rem]',
+      'max-mobile:w-[28rem]',
       className
     )}
     {...props}
   >
     <SliderPrimitive.Track className={cn(
       'relative h-[.4rem] w-full grow bg-regal-white',
-      'max-tablet:h-[.2rem]'
+      'max-tablet:h-[.2rem]',
+      'max-mobile:bg-regal-gray'
     )} />
     <SliderPrimitive.Thumb className={cn(
       'block w-[7.3rem] h-[.7rem] bg-regal-orange',
-      'max-tablet:w-[4.1rem] max-tablet:h-[.35rem]'
+      'max-tablet:w-[4.1rem] max-tablet:h-[.35rem]',
+      'max-mobile:w-[3.6rem] max-mobile:h-[.6rem]'
     )} />
   </SliderPrimitive.Root>
 ))

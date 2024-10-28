@@ -7,25 +7,32 @@ import { cn } from "@/lib/utils"
 const buttonVariants = cva(
   cn(
     'px-[3.8rem] py-[1rem] w-auto',
-    'max-tablet:py-[.6rem] max-tablet:px-[2rem]'
+    'max-tablet:px-[2rem]'
   ),
   {
     variants: {
       variant: {
         default: cn(
           'uppercase text-[2.4rem] bg-regal-orange rounded-[5rem]',
-          'max-tablet:text-[1.2rem]'
+          'max-tablet:text-[1.2rem]',
+          'max-mobile:text-[1.6rem]'
         ),
         destructive: "",
         outline: cn(
           'uppercase border-[0.1rem] rounded-[5rem] text-[2.4rem]',
-          'max-tablet:text-[1.2rem]'
+          'max-tablet:text-[1.2rem]',
+          'max-mobile:text-[1.6rem]'
         ),
         outline_orange: cn(
           'uppercase border-[0.1rem] rounded-[5rem] border-regal-orange text-[2.4rem]',
-          'max-tablet:text-[1.2rem]'
+          'max-tablet:text-[1.2rem]',
+          'max-mobile:text-[1.6rem]'
         ),
-        secondary: "",
+        secondary: cn(
+          'uppercase text-[2.4rem] rounded-[5rem] border-none bg-regal-white',
+          'max-tablet:text-[1.2rem]',
+          'max-mobile:text-[1.6rem]'
+        ),
         ghost: "",
         link: "",
       },

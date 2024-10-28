@@ -69,10 +69,13 @@ export const CardSlider: React.FC<Props> = ({ slides }) => {
     return (
         <div className={cn(
             'w-[79rem]',
-            'max-tablet:w-[45rem]', 
+            'max-tablet:w-[45rem]',
             'max-mobile:w-[40.2rem]'
         )}>
-            <Carousel setApi={setApi} className="w-full mb-[4.6rem]" opts={sliderOptions}>
+            <Carousel setApi={setApi} className={cn(
+                'w-full mb-[4.6rem]',
+                'max-mobile:mb-[2.5rem]'
+            )} opts={sliderOptions}>
                 <CarouselContent className='w-full'>
                     {
                         slides.map((item, index) => {
@@ -84,14 +87,17 @@ export const CardSlider: React.FC<Props> = ({ slides }) => {
                                     <div className={cn(
                                         'relative w-[25.3rem] h-[40.7rem] rounded-[2rem] overflow-hidden py-[3.5rem] px-[3rem]',
                                         'max-tablet:w-[21.2rem] max-tablet:h-[34.2rem] max-tablet:px-[2.6rem] max-tablet:py-[3rem]',
-                                        'max-mobile:w-[19.1rem] max-mobile:h-[14.2rem]'
+                                        'max-mobile:w-[19.1rem] max-mobile:h-[14.2rem] max-mobile:p-[2rem]'
                                     )}>
                                         <Image src={`main/bg/${item.name}.jpg`} fill priority alt='bg' className="object-cover z-[-1]" />
                                         <hr className='w-[2rem] h-[.4rem] bg-regal-white mb-[1.6rem]' />
                                         <div className='text-[1.4rem] text-regal-white mb-[1.4rem]'>
                                             {item.tourName}
                                         </div>
-                                        <div className='uppercase text-[4rem] text-regal-white font-oswald font-[400] tracking-[-0.2rem]'>
+                                        <div className={cn(
+                                            'uppercase text-[4rem] text-regal-white font-oswald font-[400] tracking-[-0.2rem]',
+                                            'max-mobile:text-[3rem]'
+                                        )}>
                                             {item.country}
                                         </div>
                                     </div>

@@ -66,7 +66,8 @@ export default function TourSection() {
             <Container>
                 <h2 className={cn(
                     'text-[6.6rem] font-[700] mb-[5rem]',
-                    'max-tablet:text-[3.2rem]'
+                    'max-tablet:text-[3.2rem]',
+                    'max-mobile:text-[3rem] max-mobile:mb-[2.6rem]'
                 )}>
                     Обирай свій тур
                 </h2>
@@ -76,10 +77,11 @@ export default function TourSection() {
                             return (
                                 <div key={index} className={cn(
                                     'flex flex-col justify-start items-start w-[34.2rem] border-regal-gray border-[0.2rem] rounded-[2rem] cursor-pointer',
-                                    'max-tablet:w-[33rem]'
+                                    'max-tablet:w-[33rem]',
+                                    'max-mobile:w-[28rem]'
                                 )}>
-                                    <div className="relative w-full h-[35.7rem] rounded-[2rem] scale-[1.01] overflow-hidden">
-                                        <Image src={card.image} alt={card.name} fill />
+                                    <div className='relative w-full h-[35.7rem] rounded-[2rem] scale-[1.01] overflow-hidden'>
+                                        <Image src={card.image} alt={card.name} fill className="object-cover" />
                                     </div>
                                     <div className="flex flex-col justify-start items-start w-full p-[2.6rem]">
                                         <h4 className="text-[2.6rem] font-[700] mb-[1.6rem]">{card.name}</h4>
