@@ -8,7 +8,7 @@ export const Scroll: React.FC<React.PropsWithChildren> = ({ children }) => {
         <Scrollbars
             autoHeight
             autoHeightMin={'100dvh'}
-            renderTrackVertical={props => <div {...props} className={'bg-regal-white top-0 right-0 h-full w-[3px!important] rounded-[1rem]'} />}
+            renderTrackVertical={props => <div {...props} className={'bg-regal-white top-0 right-0 h-full w-[3px!important] rounded-[1rem] z-[10]'} />}
             renderThumbVertical={props => <div {...props} className={'bg-regal-orange rounded-[1rem]'} />}
             universal={true}
         >

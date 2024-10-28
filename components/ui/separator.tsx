@@ -1,16 +1,19 @@
 "use client"
 
-import * as React from "react"
-import * as SeparatorPrimitive from "@radix-ui/react-separator"
+import * as SeparatorPrimitive from "@radix-ui/react-separator";
+import { cn } from "@/lib/utils";
+import * as React from "react";
 
-import { cn } from "@/lib/utils"
+interface SeparatorProps extends React.ComponentPropsWithoutRef<typeof SeparatorPrimitive.Root> {
+  gray?: boolean;
+}
 
 const Separator = React.forwardRef<
   React.ElementRef<typeof SeparatorPrimitive.Root>,
-  React.ComponentPropsWithoutRef<typeof SeparatorPrimitive.Root>
+  SeparatorProps
 >(
   (
-    { className, orientation = "horizontal", decorative = true, ...props },
+    { className, orientation = "horizontal", decorative = true, gray = false, ...props },
     ref
   ) => (
     <SeparatorPrimitive.Root
@@ -18,8 +21,9 @@ const Separator = React.forwardRef<
       decorative={decorative}
       orientation={orientation}
       className={cn(
-        "shrink-0 bg-regal-orange",
+        "shrink-0",
         orientation === "horizontal" ? "h-[2px] w-full" : "h-full w-[2px]",
+        gray ? 'bg-regal-gray' : 'bg-regal-orange',
         className
       )}
       {...props}

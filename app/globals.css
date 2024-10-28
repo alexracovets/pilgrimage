@@ -88,3 +88,22 @@ button {
   height: 3px;
   background-color: #000000;
 }
+
+.cost_list2 li {
+  width: 100%;
+  position: relative;
+  padding-left: 30px;
+}
+
+.cost_list2 li::before {
+  content: '';
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: #000000;
+}

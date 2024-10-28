@@ -24,7 +24,7 @@ export default function AfonInfoSection() {
                         <div className='text-[4.8rem] font-[600]'>
                             Тривалість
                         </div>
-                        <Separator className='my-[3rem]' />
+                        <Separator gray className='my-[3rem]' />
                         <div className='text-[1.8rem]'>
                             6 Днів
                         </div>
@@ -33,7 +33,7 @@ export default function AfonInfoSection() {
                         <div className='text-[4.8rem] font-[600]'>
                             Відправлення
                         </div>
-                        <Separator className='my-[3rem]' />
+                        <Separator gray className='my-[3rem]' />
                         <div className='text-[1.8rem]'>
                             Київ, Рівне, Тернопіль, Чернівці
                         </div>
@@ -42,7 +42,7 @@ export default function AfonInfoSection() {
                         <div className='text-[4.8rem] font-[600]'>
                             Харчування
                         </div>
-                        <Separator className='my-[3rem]' />
+                        <Separator gray className='my-[3rem]' />
                         <div className='text-[1.8rem] font-[600]'>
                             Сніданки та Вечері
                         </div>
@@ -51,7 +51,7 @@ export default function AfonInfoSection() {
                         <div className='text-[4.8rem] font-[600]'>
                             Вартість
                         </div>
-                        <Separator className='my-[3rem]' />
+                        <Separator gray className='my-[3rem]' />
                         <div className='text-[1.8rem] font-[600]'>
                             450 €
                         </div>
@@ -60,12 +60,12 @@ export default function AfonInfoSection() {
                         <div className='text-[4.8rem] font-[600]'>
                             Програма Туру
                         </div>
-                        <Separator className='my-[3rem]' />
+                        <Separator gray className='my-[3rem]' />
                         <div className='flex justify-start items-start flex-col mb-[3rem]'>
                             <div className='text-[3rem] font-[600] mb-[2rem]'>
                                 ВКЛЮЧЕНІ У ВАРТІСТЬ:
                             </div>
-                            <ul className='cost_list text-[1.8rem]'>
+                            <ul className='cost_list2 text-[1.8rem]'>
                                 <li>Переїзд комфортабельним мікроавтобусом на 8 пасажирів;</li>
                                 <li>Ночівля в готелі зі сніданком в містечку Урануполі;</li>
                                 <li>Послуги україномовного гіда на Афоні;</li>
@@ -86,7 +86,7 @@ export default function AfonInfoSection() {
                             <div className='text-[3rem] font-[600] mb-[2rem]'>
                                 ОРІЄНТОВНА ПРОГРАМА ПАЛОМНИЦТВА:
                             </div>
-                            <Separator className='my-[1.6rem]' />
+                            <Separator gray className='my-[1.6rem]' />
                             <div className='pl-[1rem]'>
                                 <div className='uppercase text-[2.5rem] font-[600] mb-[1.6rem]'>
                                     1 день:
@@ -96,7 +96,7 @@ export default function AfonInfoSection() {
                                     <li>Переїзд комфортабельним мікроавтобусом до Греції територією Румунії та Болгарії.</li>
                                 </ul>
                             </div>
-                            <Separator className='my-[2rem]' />
+                            <Separator gray className='my-[2rem]' />
                             <div className='pl-[1rem]'>
                                 <div className='uppercase text-[2.5rem] font-[600] mb-[1.6rem]'>
                                     2 день:
@@ -106,7 +106,7 @@ export default function AfonInfoSection() {
                                     <li>Переїзд в Урануполі. Поселення в готель, ночівля.</li>
                                 </ul>
                             </div>
-                            <Separator className='my-[2rem]' />
+                            <Separator gray className='my-[2rem]' />
                             <div className='pl-[1rem]'>
                                 <div className='uppercase text-[2.5rem] font-[600] mb-[1.6rem]'>
                                     3 день:
@@ -122,7 +122,7 @@ export default function AfonInfoSection() {
                                     <li>Поселення, трапеза, ночівля.</li>
                                 </ul>
                             </div>
-                            <Separator className='my-[2rem]' />
+                            <Separator gray className='my-[2rem]' />
                             <div className='pl-[1rem]'>
                                 <div className='uppercase text-[2.5rem] font-[600] mb-[1.6rem]'>
                                     4 день:
@@ -133,7 +133,7 @@ export default function AfonInfoSection() {
                                     <li>Трапеза, ночівля.</li>
                                 </ul>
                             </div>
-                            <Separator className='my-[2rem]' />
+                            <Separator gray className='my-[2rem]' />
                             <div className='pl-[1rem]'>
                                 <div className='uppercase text-[2.5rem] font-[600] mb-[1.6rem]'>
                                     5 день:
@@ -145,7 +145,7 @@ export default function AfonInfoSection() {
                                     <li>Повернення додому.</li>
                                 </ul>
                             </div>
-                            <Separator className='my-[2rem]' />
+                            <Separator gray className='my-[2rem]' />
                             <div className='pl-[1rem]'>
                                 <div className='uppercase text-[2.5rem] font-[600] mb-[1.6rem]'>
                                     6 день:
@@ -154,7 +154,7 @@ export default function AfonInfoSection() {
                                     <li>Прибуття в Україну.</li>
                                 </ul>
                             </div>
-                            <Separator className='my-[2rem]' />
+                            <Separator gray className='my-[2rem]' />
                         </div>
                     </div>
                 </div>

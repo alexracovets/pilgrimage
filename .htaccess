@@ -1,0 +1,10 @@
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^afon$ /afon.html [L]
+RewriteRule ^blog$ /blog.html [L] 
+
+# Перенаправлення на головну сторінку для всіх інших сторінок (404)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.html [L]
