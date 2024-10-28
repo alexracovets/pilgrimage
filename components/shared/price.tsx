@@ -9,6 +9,6 @@ interface Props {
 
 export const Price: React.FC<React.PropsWithChildren<Props>> = ({ className, children }) => {
     return (
-        <span className={cn('text-[2.2rem] text-regal-white text-center font-ibm font-[700] px-[3.8rem] py-[.85rem] bg-regal-orange rounded-[5rem]', className)}>{children}</span>
+        <span className={cn('uppercase text-[2.2rem] text-regal-white text-center font-ibm font-[700] px-[3.8rem] py-[.85rem] bg-regal-orange rounded-[5rem]', className)}>{children}</span>
     );
 };

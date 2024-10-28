@@ -28,7 +28,10 @@ export const MainSlider: React.FC<Props> = ({ slides }) => {
     const prevSlider = useMainSlider(state => state.prevSlider);
     const isMobile = useIsMobile(state => state.isMobile);
     const [api, setApi] = useState<CarouselApi>();
-    const sliderOptions = { duration: 60 };
+    const sliderOptions = {
+        duration: 60,
+        startIndex: slides.length - 1
+    };
 
     useEffect(() => {
         if (!api) return;
@@ -36,7 +39,12 @@ export const MainSlider: React.FC<Props> = ({ slides }) => {
     }, [api, prevSlider])
 
     return (
-        <Carousel className="absolute left-0 top-0 w-full h-full z-[-1]" opts={sliderOptions} setApi={setApi} plugins={[Fade()]}>
+        <Carousel
+            className="absolute left-0 top-0 w-full h-full z-[-1]"
+            setApi={setApi}
+            opts={sliderOptions}
+            plugins={[Fade()]}
+        >
             <CarouselContent className={cn(
                 'w-full h-[100dvh]',
                 'max-mobile:h-[35.142rem]'

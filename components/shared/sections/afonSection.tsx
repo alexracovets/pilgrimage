@@ -35,7 +35,9 @@ export default function AfonSection() {
                             <span className={cn(
                                 'text-[1.6rem] text-regal-black',
                                 'max-tablet:text-[1.4rem]'
-                            )}>VIP пропозиція</span>
+                            )}>
+                                VIP пропозиція
+                            </span>
                         </div>
                     </div>
 

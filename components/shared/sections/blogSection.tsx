@@ -43,7 +43,7 @@ export default function BlogSection() {
                             } else {
                                 count = 73;
                             }
-                            console.log(count)
+
                             if (item.title.length > count) {
                                 title = item.title.slice(0, count - 3) + '...';
                             } else {

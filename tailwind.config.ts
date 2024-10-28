@@ -25,6 +25,9 @@ const config: Config = {
 				'regal-gray': '#E9E9E9',
 				'opacity-orange': '#ff632800'
 			},
+			objectPosition: {
+				'afon': '-13rem -16rem',
+			},
 		}
 	},
 	plugins: [tailwindcssAnimate],

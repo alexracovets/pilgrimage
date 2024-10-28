@@ -27,6 +27,10 @@ interface Props {
 export const TextSlider: React.FC<Props> = ({ slides }) => {
     const prevSlider = useMainSlider(state => state.prevSlider);
     const [api, setApi] = useState<CarouselApi>();
+    const sliderOptions = {
+        duration: 60,
+        startIndex: slides.length - 1
+    };
 
     useEffect(() => {
         if (!api) return;
@@ -38,7 +42,11 @@ export const TextSlider: React.FC<Props> = ({ slides }) => {
             'w-[52rem]',
             'max-tablet:w-[33.2rem] max-tablet:mr-[2.2rem] max-tablet:mb-[5.8rem]',
             'max-mobile:w-full max-mobile:m-0'
-        )} setApi={setApi} plugins={[Fade()]}>
+        )}
+            setApi={setApi}
+            opts={sliderOptions}
+            plugins={[Fade()]}
+        >
             <CarouselContent className='w-full'>
                 {
                     slides.map((item, index) => {

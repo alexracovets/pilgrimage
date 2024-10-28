@@ -17,7 +17,11 @@ const buttonVariants = cva(
           'max-tablet:text-[1.2rem]',
           'max-mobile:text-[1.6rem]'
         ),
-        destructive: "",
+        destructive: cn(
+          'uppercase text-[2.4rem] rounded-[5rem] border-none bg-regal-black',
+          'max-tablet:text-[1.6rem]',
+          'max-mobile:text-[1.6rem]'
+        ),
         outline: cn(
           'uppercase border-[0.1rem] rounded-[5rem] text-[2.4rem]',
           'max-tablet:text-[1.6rem]',

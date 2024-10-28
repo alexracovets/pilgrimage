@@ -1,13 +1,17 @@
 'use client';
 
 import { FaInstagram, FaFacebook, FaYoutube } from "react-icons/fa";
+import React, { useEffect, useState } from 'react';
+import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
-import React from 'react';
 
 import { Container } from "@/components/shared/container";
 
 export const Footer: React.FC = () => {
+    const [isBlack, setIsBlack] = useState(false);
+    const pathname = usePathname();
+
     const phone = '+380503525236';
     const post = 'pilgrimage_center@ukr.net';
     const socialStyle = 'w-[4.8rem] h-[4.8rem] max-tablet:w-[3.6rem] max-tablet:h-[3.6rem] max-mobile:w-[2.7rem] max-mobile:h-[2.7rem]'
@@ -26,8 +30,15 @@ export const Footer: React.FC = () => {
         }
     ]
 
+    useEffect(() => {
+        if (pathname === '/afon') {
+            setIsBlack(true);
+        } else setIsBlack(false);
+
+    }, [pathname])
+
     return (
-        <footer className='bg-regal-orange'>
+        <footer className={isBlack ? 'bg-regal-black' : 'bg-regal-orange'}>
             <Container className={cn(
                 'py-[10rem] text-regal-white',
                 'max-tablet:py-[5rem]'

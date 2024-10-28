@@ -1,7 +1,8 @@
 'use client';
 
+import React, { useState, useRef, useEffect } from 'react';
 import { Fade as Hamburger } from 'hamburger-react';
-import React, { useState, useRef } from 'react';
+import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -13,15 +14,24 @@ export const Header: React.FC = () => {
     const [underlineStyles, setUnderlineStyles] = useState({ left: '0px', width: '0px' });
     const menuRef = useRef<HTMLDivElement>(null);
     const [isMobuleMenu, setIsMobuleMenu] = useState(false);
+    const [isBlack, setIsBlack] = useState(false);
+    const pathname = usePathname();
 
     const links = [
         { href: '/', name: 'Головна' },
         { href: '/', name: 'Про нас' },
         { href: '/', name: 'Тури' },
         { href: '/blog', name: 'Блог' },
-        { href: '/', name: 'Афон' },
+        { href: '/afon', name: 'Афон' },
         { href: '/', name: 'Контакти' }
     ];
+
+    useEffect(() => {
+        if (pathname === '/afon') {
+            setIsBlack(true);
+        } else setIsBlack(false);
+
+    }, [pathname])
 
     const handleMouseEnter = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
         const linkRect = e.currentTarget.getBoundingClientRect();
@@ -36,7 +46,10 @@ export const Header: React.FC = () => {
 
 
     return (
-        <header className='absolute left-0 top-0 w-full py-[1rem] z-[10] bg-regal-orange'>
+        <header className={cn(
+            'absolute left-0 top-0 w-full py-[1rem] z-[10] bg-regal-orange transition-all duration-300 ease-in-out',
+            isBlack ? 'bg-regal-black' : 'bg-regal-orange'
+        )}>
             <Container className='flex justify-between items-center'>
                 <div className='relative flex justify-center items-center z-[100]'>
                     <div className={cn(
