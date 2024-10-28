@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
   cn(
-    'px-[3.8rem] py-[1rem] w-auto',
+    'px-[3.8rem] py-[1.5rem] w-auto',
     'max-tablet:px-[2rem]'
   ),
   {
@@ -20,17 +20,17 @@ const buttonVariants = cva(
         destructive: "",
         outline: cn(
           'uppercase border-[0.1rem] rounded-[5rem] text-[2.4rem]',
-          'max-tablet:text-[1.2rem]',
+          'max-tablet:text-[1.6rem]',
           'max-mobile:text-[1.6rem]'
         ),
         outline_orange: cn(
           'uppercase border-[0.1rem] rounded-[5rem] border-regal-orange text-[2.4rem]',
-          'max-tablet:text-[1.2rem]',
+          'max-tablet:text-[1.6rem]',
           'max-mobile:text-[1.6rem]'
         ),
         secondary: cn(
           'uppercase text-[2.4rem] rounded-[5rem] border-none bg-regal-white',
-          'max-tablet:text-[1.2rem]',
+          'max-tablet:text-[1.6rem]',
           'max-mobile:text-[1.6rem]'
         ),
         ghost: "",

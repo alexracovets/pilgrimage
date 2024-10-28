@@ -18,7 +18,7 @@ export const Header: React.FC = () => {
         { href: '/', name: 'Головна' },
         { href: '/', name: 'Про нас' },
         { href: '/', name: 'Тури' },
-        { href: '/', name: 'Блог' },
+        { href: '/blog', name: 'Блог' },
         { href: '/', name: 'Афон' },
         { href: '/', name: 'Контакти' }
     ];
