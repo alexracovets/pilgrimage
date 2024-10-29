@@ -10,7 +10,7 @@ import { cn } from "@/lib/utils";
 
 export default function AboutSection() {
     return (
-        <Section>
+        <Section id='about'>
             <Container>
                 <div className="flex justify-between items-center">
                     <div className={cn(

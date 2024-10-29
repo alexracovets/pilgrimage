@@ -11,25 +11,26 @@ import { Price } from "@/components/shared/price";
 import { Button } from "@/components/ui/button";
 
 interface Tour {
-    name: string;
-    tourName: string;
+    page: string;
     country: string;
+    tourName: string;
     price: string;
-    date: string;
+    duration: string;
     description: string;
 }
+
 interface StartTourSectionProps {
-    tour: Tour;
+    tour: Tour; 
 }
 
 export default function TourMainSection({ tour }: StartTourSectionProps) {
-    
+
     return (
         <Section className={cn(
             'h-[100dvh] m-0 max-tablet:m-0 relative',
             'max-mobile:h-auto'
         )}>
-            <Image src={`/main/bg/${tour.name}.jpg`} fill priority alt='bg' className="object-cover z-[-1]" />
+            <Image src={`/main/bg/${tour.page}.jpg`} fill priority alt='bg' className="object-cover z-[-1]" />
             <Container className={cn(
                 'flex justify-end items-end w-ful h-full pt-[11rem] pb-[8rem] flex',
                 'max-tablet:pb-[3.6rem]',
@@ -73,7 +74,7 @@ export default function TourMainSection({ tour }: StartTourSectionProps) {
                                     'max-tablet:w-[1.4rem] max-tablet:h-[1.4rem] max-tablet:mr-[.7rem]'
                                 )}
                             />
-                            {tour.date}
+                            {tour.duration}
                         </div>
                     </div>
                     <div className={cn(

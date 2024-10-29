@@ -1,6 +1,6 @@
 import TourInfoSection from "@/components/shared/sections/tourInfoSection";
 import TourMainSection from "@/components/shared/sections/tourMainSection";
-import dataTours from "@/data/dataTours";
+import dataTours from "@/data/dataToursNew";
 import { notFound } from 'next/navigation';
 
 interface Params {
@@ -11,13 +11,13 @@ interface Params {
 
 export async function generateStaticParams() {
   return dataTours.map((tour) => ({
-    tourId: tour.name.toLowerCase(),
+    tourId: tour.page.toLowerCase(),
   }));
 }
 
 export default async function TourDetails({ params }: Params) {
   const { tourId } = params;
-  const tour = dataTours.find((t) => t.name.toLowerCase() === tourId);
+  const tour = dataTours.find((tour) => tour.page.toLowerCase() === tourId);
 
   if (!tour) {
     notFound();

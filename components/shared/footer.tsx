@@ -38,7 +38,7 @@ export const Footer: React.FC = () => {
     }, [pathname])
 
     return (
-        <footer className={isBlack ? 'bg-regal-black' : 'bg-regal-orange'}>
+        <footer className={isBlack ? 'bg-regal-black' : 'bg-regal-orange'} id="contacts">
             <Container className={cn(
                 'py-[10rem] text-regal-white',
                 'max-tablet:py-[5rem]'

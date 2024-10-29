@@ -1,8 +1,8 @@
 'use client';
 
 import React, { useState, useRef, useEffect } from 'react';
+import { usePathname, useRouter } from 'next/navigation';
 import { Fade as Hamburger } from 'hamburger-react';
-import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -13,18 +13,46 @@ import { Container } from "@/components/shared/container";
 export const Header: React.FC = () => {
     const [underlineStyles, setUnderlineStyles] = useState({ left: '0px', width: '0px' });
     const menuRef = useRef<HTMLDivElement>(null);
+    const [scrollTarget, setScrollTarget] = useState<string | null>(null);
     const [isMobuleMenu, setIsMobuleMenu] = useState(false);
     const [isBlack, setIsBlack] = useState(false);
     const pathname = usePathname();
+    const router = useRouter();
 
     const links = [
         { href: '/', name: 'Головна' },
-        { href: '/', name: 'Про нас' },
-        { href: '/', name: 'Тури' },
+        { href: '/#about', name: 'Про нас' },
+        { href: '/#tours', name: 'Тури' },
         { href: '/blog', name: 'Блог' },
         { href: '/afon', name: 'Афон' },
-        { href: '/', name: 'Контакти' }
+        { href: '/#contacts', name: 'Контакти' }
     ];
+    const handleScroll = (e: React.MouseEvent, href: string) => {
+        e.preventDefault();
+        const elementId = href.split('#')[1];
+
+        if (pathname === '/') {
+            const element = document.getElementById(elementId);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        } else {
+            // Якщо не на головній сторінці, встановлюємо ціль для скролу і робимо навігацію
+            setScrollTarget(elementId);
+            router.push('/');
+        }
+    };
+
+    useEffect(() => {
+        if (scrollTarget && pathname === '/') {
+            const element = document.getElementById(scrollTarget);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+                // Скидаємо ціль після скролу
+                setScrollTarget(null);
+            }
+        }
+    }, [pathname, scrollTarget]);
 
     useEffect(() => {
         if (pathname === '/afon') {
@@ -85,15 +113,22 @@ export const Header: React.FC = () => {
                         'gap-[2rem]'
                     )}>
                         {links.map((link, index) => (
-                            <Link href={link.href} key={index} legacyBehavior passHref>
-                                <a className={cn(
+                            <Link
+                                href={link.href}
+                                key={index}
+                                passHref
+                                onClick={(e) => {
+                                    if (link.href.includes('#')) {
+                                        handleScroll(e, link.href);
+                                    }
+                                }}
+                                className={cn(
                                     'uppercase text-[1.6rem] text-regal-white font-[700] p-[.8rem]',
                                     'max-tablet:text-[.8rem] max-tablet:p-[.4rem]'
                                 )}
-                                    onMouseEnter={handleMouseEnter}
-                                >
-                                    {link.name}
-                                </a>
+                                onMouseEnter={handleMouseEnter}
+                            >
+                                {link.name}
                             </Link>
                         ))}
                         <div className={cn(

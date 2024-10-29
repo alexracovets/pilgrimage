@@ -6,13 +6,37 @@ import { Container } from "@/components/shared/container";
 import { Section } from "@/components/shared/section";
 import { Separator } from '@/components/ui/separator';
 
-interface Tour {
+interface Day {
     name: string;
-    tourName: string;
+    list: string[];
+}
+
+interface Items {
+    name: string;
+    value: string;
+}
+
+interface Program {
+    type: string;
+    value?: string;
+    name?: string;
+    list?: string[];
+    days?: Day[]
+}
+
+interface More {
+    items: Items[];
+    program: Program[];
+}
+
+interface Tour {
+    page: string;
     country: string;
+    tourName: string;
     price: string;
-    date: string;
+    duration: string;
     description: string;
+    more: More;
 }
 interface StartTourSectionProps {
     tour: Tour;
@@ -31,49 +55,21 @@ export default function TourInfoSection({ tour }: StartTourSectionProps) {
                 'max-mobile:pt-[37.142rem]'
             )}>
                 <div className='flex justify-between items start w-full flex-wrap gap-y-[5rem]'>
-                    <div className='w-[69.9rem]'>
-                        <div className='text-[4.8rem] font-[600]'>
-                            Дата
-                        </div>
-                        <Separator className='my-[3rem]' />
-                        <div className='text-[1.8rem]'>
-                            {tour.date}
-                        </div>
-                    </div>
-                    <div className='w-[69.9rem]'>
-                        <div className='text-[4.8rem] font-[600]'>
-                            Відправлення
-                        </div>
-                        <Separator className='my-[3rem]' />
-                        <div className='text-[1.8rem]'>
-                            {tour.date}
-                        </div>
-                    </div>
-                    <div className='w-[69.9rem]'>
-                        <div className='text-[4.8rem] font-[600]'>
-                            Програма туру
-                        </div>
-                        <Separator className='my-[3rem]' />
-                        <div className='text-[1.8rem]'>
-                            {tour.date}
-                        </div>
-                    </div>
-                    <div className='w-[69.9rem]'>
-                        <div className='text-[4.8rem] font-[600]'>
-                            Харчування
-                        </div>
-                        <Separator className='my-[3rem]' />
-                        <div className='text-[1.8rem]'>
-                            {tour.date}
-                        </div>
-                        <div className='text-[4.8rem] font-[600] mt-[5rem]'>
-                            Ціна
-                        </div>
-                        <Separator className='my-[3rem]' />
-                        <div className='text-[1.8rem]'>
-                            {tour.date}
-                        </div>
-                    </div>
+                    {
+                        tour.more.items.map((item, index) => {
+                            return (
+                                <div key={index} className='w-[69.9rem]'>
+                                    <div className='text-[4.8rem] font-[600]'>
+                                        {item.name}
+                                    </div>
+                                    <Separator gray className='my-[3rem]' />
+                                    <div className='text-[1.8rem]'>
+                                        {item.value}
+                                    </div>
+                                </div>
+                            )
+                        })
+                    }
                 </div>
 
             </Container>

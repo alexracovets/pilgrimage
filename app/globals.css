@@ -75,7 +75,7 @@ button {
 .cost_list li {
   width: 100%;
   position: relative;
-  padding-left: 40px;
+  padding-left: 26px;
 }
 
 .cost_list li::before {
@@ -84,25 +84,8 @@ button {
   left: 10px;
   top: 50%;
   transform: translateY(-50%);
-  width: 20px;
-  height: 3px;
-  background-color: #000000;
-}
-
-.cost_list2 li {
-  width: 100%;
-  position: relative;
-  padding-left: 30px;
-}
-
-.cost_list2 li::before {
-  content: '';
-  position: absolute;
-  left: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 10px;
-  height: 10px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
   overflow: hidden;
   background-color: #000000;
