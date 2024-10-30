@@ -1,8 +1,8 @@
 'use client';
 
 import { CalendarClock } from "lucide-react";
+import { useEffect, useRef } from "react";
 import { FaStar } from "react-icons/fa";
-import { useEffect } from "react";
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
 
@@ -12,17 +12,25 @@ import { Section } from "@/components/shared/section";
 import { Price } from "@/components/shared/price";
 import { Button } from "@/components/ui/button";
 
+import Intersection from '@/tools/intersection';
 import useHeader from '@/store/useHeader';
 
 export default function AfonMainSection() {
+    const sectionRef = useRef<HTMLDivElement>(null);
     const setActiveLink = useHeader(state => state.setActiveLink);
 
     useEffect(() => {
-        setActiveLink('afonLink');
-    }, [setActiveLink])
+        if (sectionRef.current) {
+            const cleanup = Intersection(sectionRef, setActiveLink, 'afonLink');
+
+            return () => {
+                if (cleanup) cleanup();
+            };
+        }
+    }, [sectionRef, setActiveLink]);
 
     return (
-        <Section className='h-[100dvh] m-0 max-tablet:m-0 relative'>
+        <Section ref={sectionRef} className='h-[100dvh] m-0 max-tablet:m-0 relative'>
             <Image src='/img/afon_main.jpg' alt='afon' fill priority className="object-cover object-left-top z-[-1]" />
             <Container className={cn(
                 'flex justify-end items-end w-ful h-full pt-[11rem] pb-[8rem] flex',

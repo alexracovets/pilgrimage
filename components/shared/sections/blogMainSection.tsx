@@ -1,12 +1,13 @@
 'use client';
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
 
 import { Container } from "@/components/shared/container";
 import { Section } from "@/components/shared/section";
 
+import Intersection from '@/tools/intersection';
 import useHeader from '@/store/useHeader';
 
 interface Blog {
@@ -20,14 +21,20 @@ interface Blog {
 }
 
 export default function BlogMainSection({ blog }: Blog) {
+    const sectionRef = useRef<HTMLDivElement>(null);
     const setActiveLink = useHeader(state => state.setActiveLink);
 
     useEffect(() => {
-        setActiveLink('blogLink');
-    }, [setActiveLink])
+        if (sectionRef.current) {
+            const cleanup = Intersection(sectionRef, setActiveLink, 'blogLink');
+            return () => {
+                if (cleanup) cleanup();
+            };
+        }
+    }, [setActiveLink]);
 
     return (
-        <Section className='h-[100dvh] m-0 max-tablet:m-0 relative bg-gradient-to-t from-20% to-60% from-regal-orange to-opacity-orange'>
+        <Section ref={sectionRef} className='h-[100dvh] m-0 max-tablet:m-0 relative bg-gradient-to-t from-20% to-60% from-regal-orange to-opacity-orange'>
             <Image src={`/blog/main/${blog.background}`} alt={blog.page} fill priority className="object-cover object-left-top z-[-1]" />
             <Container className={cn(
                 'flex justify-end items-end w-ful h-full py-[10rem] flex',

@@ -1,6 +1,7 @@
 'use client';
 
 import { CalendarClock } from "lucide-react";
+import { useEffect, useRef } from "react";
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
 
@@ -9,6 +10,9 @@ import CustomArrow from "@/components/shared/customArrow";
 import { Section } from "@/components/shared/section";
 import { Price } from "@/components/shared/price";
 import { Button } from "@/components/ui/button";
+
+import Intersection from '@/tools/intersection';
+import useHeader from '@/store/useHeader';
 
 interface Tour {
     page: string;
@@ -24,9 +28,20 @@ interface StartTourSectionProps {
 }
 
 export default function TourMainSection({ tour }: StartTourSectionProps) {
+    const sectionRef = useRef<HTMLDivElement>(null);
+    const setActiveLink = useHeader(state => state.setActiveLink);
+
+    useEffect(() => {
+        if (sectionRef.current) {
+            const cleanup = Intersection(sectionRef, setActiveLink, 'toursLink');
+            return () => {
+                if (cleanup) cleanup();
+            };
+        }
+    }, [setActiveLink]);
 
     return (
-        <Section className='h-[100dvh] m-0 max-tablet:m-0 relative'>
+        <Section ref={sectionRef} className='h-[100dvh] m-0 max-tablet:m-0 relative'>
             <Image src={`/main/bg/${tour.page}.jpg`} fill priority alt='bg' className="object-cover z-[-1]" />
             <Container className={cn(
                 'flex justify-end items-end w-ful h-full pt-[11rem] pb-[8rem] flex',

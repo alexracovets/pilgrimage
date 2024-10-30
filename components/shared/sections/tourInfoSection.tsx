@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect, useRef } from 'react';
 import { cn } from '@/lib/utils';
 
 import CustomArrow from "@/components/shared/customArrow";
@@ -7,6 +8,9 @@ import { Container } from "@/components/shared/container";
 import { Section } from "@/components/shared/section";
 import { Separator } from '@/components/ui/separator';
 import { Button } from "@/components/ui/button";
+
+import Intersection from '@/tools/intersection';
+import useHeader from '@/store/useHeader';
 
 interface Day {
     name: string;
@@ -45,9 +49,20 @@ interface StartTourSectionProps {
 }
 
 export default function TourInfoSection({ tour }: StartTourSectionProps) {
+    const sectionRef = useRef<HTMLDivElement>(null);
+    const setActiveLink = useHeader(state => state.setActiveLink);
+
+    useEffect(() => {
+        if (sectionRef.current) {
+            const cleanup = Intersection(sectionRef, setActiveLink, 'toursLink');
+            return () => {
+                if (cleanup) cleanup();
+            };
+        }
+    }, [setActiveLink]);
 
     return (
-        <Section className='m-0 max-tablet:m-0'>
+        <Section ref={sectionRef} className='m-0 max-tablet:m-0'>
             <Container className={cn(
                 'py-[10rem]',
                 'max-tablet:py-[5rem]'
