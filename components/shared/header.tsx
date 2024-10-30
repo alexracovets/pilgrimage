@@ -25,22 +25,27 @@ export const Header: React.FC = () => {
         { href: '/#tours', name: 'Тури' },
         { href: '/blog', name: 'Блог' },
         { href: '/afon', name: 'Афон' },
-        { href: '/#contacts', name: 'Контакти' }
+        { href: '#contacts', name: 'Контакти' }
     ];
     const handleScroll = (e: React.MouseEvent, href: string) => {
         e.preventDefault();
         const elementId = href.split('#')[1];
 
-        if (pathname === '/') {
+        if (elementId === 'contacts') {
             const element = document.getElementById(elementId);
             if (element) {
                 element.scrollIntoView({ behavior: 'smooth' });
             }
-        } else {
-            // Якщо не на головній сторінці, встановлюємо ціль для скролу і робимо навігацію
-            setScrollTarget(elementId);
-            router.push('/');
-        }
+        } else
+            if (pathname === '/') {
+                const element = document.getElementById(elementId);
+                if (element) {
+                    element.scrollIntoView({ behavior: 'smooth' });
+                }
+            } else {
+                setScrollTarget(elementId);
+                router.push('/');
+            }
     };
 
     useEffect(() => {
@@ -48,7 +53,6 @@ export const Header: React.FC = () => {
             const element = document.getElementById(scrollTarget);
             if (element) {
                 element.scrollIntoView({ behavior: 'smooth' });
-                // Скидаємо ціль після скролу
                 setScrollTarget(null);
             }
         }

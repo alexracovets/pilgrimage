@@ -1,17 +1,26 @@
 'use client';
 
 import { CircleArrowRight } from "lucide-react";
+import { useState } from "react";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
+import Link from "next/link";
 
 import { Container } from "@/components/shared/container";
 import { Section } from "@/components/shared/section";
 import { Price } from "@/components/shared/price";
 import { Button } from "@/components/ui/button";
-import dataTours from "@/data/dataToursNew";
-import Link from "next/link";
+import dataTours from "@/data/dataTours";
+
 
 export default function TourSection() {
+    const [activeItems, setActiveItems] = useState(8);
+    const [isBtn, setIsBtn] = useState(activeItems <= dataTours.length)
+
+    const handleShowMore = () => {
+        setActiveItems(prev => prev + 2);
+        setIsBtn(activeItems + 2 < dataTours.length);
+    };
 
     return (
         <Section id="tours">
@@ -25,7 +34,7 @@ export default function TourSection() {
                 </h2>
                 <div className="flex flex-wrap justify-start gap-x-[1rem] gap-y-[1.5rem]">
                     {
-                        dataTours.map((card, index) => {
+                        dataTours.slice(0, activeItems).map((card, index) => {
                             return (
                                 <Link href={`/tours/${card.page}`} key={index}>
                                     <div className={cn(
@@ -50,7 +59,7 @@ export default function TourSection() {
                         })
                     }
                 </div>
-                <Button variant='outline_orange' className="mx-auto text-regal-orange mt-[5rem]">Показати всі</Button>
+                {isBtn ? <Button variant='outline_orange' className="mx-auto text-regal-orange mt-[5rem]" onClick={handleShowMore}>Показати всі</Button> : null}
             </Container>
         </Section>
     );

@@ -1,7 +1,9 @@
 'use client';
 import { CircleArrowRight } from "lucide-react";
+import { useState } from "react";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
+import Link from "next/link";
 
 import CustomArrow from "@/components/shared/customArrow";
 import { Container } from "@/components/shared/container";
@@ -12,6 +14,13 @@ import dataBlog from "@/data/dataBlog";
 
 export default function BlogSection() {
     const viewSize = useIsMobile(state => state.viewSize);
+    const [activeItems, setActiveItems] = useState(4);
+    const [isBtn, setIsBtn] = useState(activeItems <= dataBlog.length)
+
+    const handleShowMore = () => {
+        setActiveItems(prev => prev + 2);
+        setIsBtn(activeItems + 2 < dataBlog.length);
+    };
 
     return (
         <Section className={cn(
@@ -32,39 +41,50 @@ export default function BlogSection() {
                     'max-mobile:gap-y-[2.6rem] max-mobile:flex-col'
                 )}>
                     {
-                        dataBlog.map((item, index) => {
+                        dataBlog.slice(0, activeItems).map((item, index) => {
                             let title = '';
-                            let count = 0;
+                            let description = '';
+                            let countTitle = 0;
+                            let countDescription = 0;
 
                             if (viewSize <= 1023 && viewSize > 539) {
-                                count = 45;
+                                countTitle = 45;
+                                countDescription = 165;
                             } else if (viewSize <= 539) {
-                                count = 40;
+                                countTitle = 40;
+                                countDescription = 165;
                             } else {
-                                count = 73;
+                                countTitle = 73;
+                                countDescription = 159;
                             }
 
-                            if (item.title.length > count) {
-                                title = item.title.slice(0, count - 3) + '...';
+                            if (item.title.length > countTitle) {
+                                title = item.title.slice(0, countTitle - 3) + '...';
                             } else {
                                 title = item.title;
                             }
 
+                            if (item.short_description.length > countTitle) {
+                                description = item.short_description.slice(0, countDescription - 3) + '...';
+                            } else {
+                                description = item.short_description;
+                            }
+
                             return (
-                                <div key={index} className={cn(
+                                <Link href={`/blog/${item.page}`} key={index} className={cn(
                                     'flex justify-start items-start flex-col w-[69.9rem] h-[56.8rem] rounded-[2rem] border-regal-gray border-[.2rem]',
                                     'max-tablet:w-[32.9rem] max-tablet:h-[52.2rem]',
                                     'max-mobile:w-full max-mobile:h-[56.6rem]'
                                 )}>
                                     <div className={cn(
-                                        'relative w-full h-[35.7rem] rounded-[2rem] overflow-hidden',
+                                        'relative w-full h-[35.7rem] min-h-[35.7rem] rounded-[2rem] overflow-hidden',
                                         'max-tablet:h-[20rem]'
                                     )}>
-                                        <Image src={`/blog/posts/${item.image}`} fill alt={item.name} priority className="object-cover" />
+                                        <Image src={`/blog/card/${item.image}`} fill alt={item.page} priority className="object-cover object-top" />
                                     </div>
-                                    <div className="flex justify-between items-start w-full py-[2.8rem] px-[2.6rem]">
+                                    <div className="flex justify-between items-start w-full h-full py-[2.8rem] px-[2.6rem]">
                                         <div className={cn(
-                                            'flex justify-start items-start flex-col w-[49.3rem]',
+                                            'flex justify-start items-start flex-col w-[49.3rem] h-full',
                                             'max-tablet:w-full'
                                         )}>
                                             <div className={cn(
@@ -74,10 +94,10 @@ export default function BlogSection() {
                                                 {title}
                                             </div>
                                             <div className={cn(
-                                                'text-[1.8rem] leading-[1.2] tracking-[0.01rem]',
+                                                'text-[1.8rem] leading-[1.2] tracking-[0.01rem] grow',
                                                 'max-tablet:tracking-[-0.01rem] max-tablet:mb-[2.6rem]'
                                             )}>
-                                                {item.description}
+                                                {description}
                                             </div>
                                             <Button variant='outline_orange' className={cn(
                                                 'justify-center items-center w-full hidden',
@@ -89,12 +109,13 @@ export default function BlogSection() {
                                         </div>
                                         <CircleArrowRight strokeWidth={'.1rem'} className="w-[3.9rem] h-[3.9rem] max-tablet:hidden" />
                                     </div>
-                                </div>
+                                </Link>
                             )
                         })
                     }
                 </div>
-                <Button variant='outline_orange' className="mx-auto text-regal-orange mt-[5rem]">Показати всі</Button>
+                {isBtn ? <Button variant='outline_orange' className="mx-auto text-regal-orange mt-[5rem]" onClick={handleShowMore}>Показати всі</Button> : null}
+
             </Container>
         </Section>
     );

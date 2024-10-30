@@ -20,23 +20,24 @@ interface Tour {
 }
 
 interface StartTourSectionProps {
-    tour: Tour; 
+    tour: Tour;
 }
 
 export default function TourMainSection({ tour }: StartTourSectionProps) {
 
     return (
-        <Section className={cn(
-            'h-[100dvh] m-0 max-tablet:m-0 relative',
-            'max-mobile:h-auto'
-        )}>
+        <Section className='h-[100dvh] m-0 max-tablet:m-0 relative'>
             <Image src={`/main/bg/${tour.page}.jpg`} fill priority alt='bg' className="object-cover z-[-1]" />
             <Container className={cn(
                 'flex justify-end items-end w-ful h-full pt-[11rem] pb-[8rem] flex',
-                'max-tablet:pb-[3.6rem]',
-                'max-mobile:pt-[37.142rem]'
+                'max-tablet:pb-[9.5rem]',
+                'max-mobile:pb-[2rem]'
             )}>
-                <div className='flex justify-start items-start flex-col w-[69.7rem]'>
+                <div className={cn(
+                    'flex justify-start items-start flex-col w-[69.7rem]',
+                    'max-tablet:w-[33.2rem]',
+                    'max-mobile:w-full'
+                )}>
                     <div className={cn(
                         'text-[2.6rem] text-regal-white mb-[1.8rem]',
                         'max-tablet:text-[1.2rem] max-tablet:mb-[.88rem]',

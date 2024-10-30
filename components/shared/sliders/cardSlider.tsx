@@ -10,12 +10,9 @@ import { Slider } from "@/components/ui/slider";
 import useMainSlider from '@/store/useMainSlider';
 
 interface Slide {
-    name: string;
+    page: string;
     country: string;
     tourName: string;
-    price: string;
-    date: string;
-    description: string;
 }
 
 interface Props {
@@ -89,7 +86,7 @@ export const CardSlider: React.FC<Props> = ({ slides }) => {
                                         'max-tablet:w-[21.2rem] max-tablet:h-[34.2rem] max-tablet:px-[2.6rem] max-tablet:py-[3rem]',
                                         'max-mobile:w-[19.1rem] max-mobile:h-[14.2rem] max-mobile:p-[2rem]'
                                     )}>
-                                        <Image src={`main/bg/${item.name}.jpg`} fill priority alt='bg' className="object-cover z-[-1]" />
+                                        <Image src={`main/bg/${item.page}.jpg`} fill priority alt='bg' className="object-cover z-[-1]" />
                                         <hr className='w-[2rem] h-[.4rem] bg-regal-white mb-[1.6rem]' />
                                         <div className='text-[1.4rem] text-regal-white mb-[1.4rem]'>
                                             {item.tourName}

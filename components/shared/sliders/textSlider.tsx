@@ -12,11 +12,11 @@ import useMainSlider from '@/store/useMainSlider';
 import { cn } from '@/lib/utils';
 
 interface Slide {
-    name: string;
+    page: string;
     country: string;
     tourName: string;
     price: string;
-    date: string;
+    duration: string;
     description: string;
 }
 
@@ -91,7 +91,7 @@ export const TextSlider: React.FC<Props> = ({ slides }) => {
                                                 'max-tablet:w-[1.4rem] max-tablet:h-[1.4rem] max-tablet:mr-[.7rem]'
                                             )}
                                         />
-                                        {item.date}
+                                        {item.duration}
                                     </div>
                                 </div>
                                 <div className={cn(

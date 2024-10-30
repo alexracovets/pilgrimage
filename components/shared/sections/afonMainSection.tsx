@@ -14,21 +14,22 @@ import { Button } from "@/components/ui/button";
 export default function AfonMainSection() {
 
     return (
-        <Section className={cn(
-            'h-[100dvh] m-0 max-tablet:m-0 relative',
-            'max-mobile:h-auto'
-        )}>
+        <Section className='h-[100dvh] m-0 max-tablet:m-0 relative'>
             <Image src='/img/afon_main.jpg' alt='afon' fill priority className="object-cover object-left-top z-[-1]" />
             <Container className={cn(
                 'flex justify-end items-end w-ful h-full pt-[11rem] pb-[8rem] flex',
-                'max-tablet:pb-[3.6rem]',
-                'max-mobile:pt-[37.142rem]'
+                'max-tablet:pb-[9.5rem]',
+                'max-mobile:pb-[2rem]'
             )}>
-                <div className='flex justify-start items-start flex-col w-[69.7rem]'>
+                <div className={cn(
+                    'flex justify-start items-start flex-col w-[69.7rem]',
+                    'max-tablet:w-[33.2rem]',
+                    'max-mobile:w-full'
+                )}>
                     <div className={cn(
-                        'flex justify-start items-center mb-[1.8rem]',
-                        'max-tablet:mb-[.88rem]',
-                        'max-mobile:mb-[.97rem]'
+                        'flex justify-start items-center text-[2.6rem] mb-[1.8rem]',
+                        'max-tablet:text-[1.2rem] max-tablet:mb-[.88rem]',
+                        'max-mobile:text-[1.4rem] max-mobile:mb-[.97rem]'
                     )}>
                         <FaStar color="#000000" className={cn(
                             'mr-[1.8rem] w-[2.2rem] h-[2.2rem]',

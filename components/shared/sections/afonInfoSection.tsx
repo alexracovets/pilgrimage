@@ -11,24 +11,39 @@ import dataAfon from '@/data/dataAfon';
 
 export default function AfonInfoSection() {
     return (
-        <Section className={cn(
-            'm-0 max-tablet:m-0 relative'
-        )}>
+        <Section className='m-0 max-tablet:m-0'>
             <Container className={cn(
-                'w-ful h-full pt-[11rem] pb-[8rem]',
-                'max-tablet:pb-[3.6rem]',
-                'max-mobile:pt-[37.142rem]'
+                'py-[10rem]',
+                'max-tablet:py-[5rem]'
             )}>
-                <div className='flex justify-between items start w-full flex-wrap gap-y-[5rem]'>
+                <div className={cn(
+                    'flex justify-between items start w-full flex-wrap gap-y-[5rem] mb-[10rem]',
+                    'max-tablet:mb-[5rem]',
+                    'max-mobile:gap-y-[4rem]'
+                )}>
                     {
                         dataAfon.items.map((item, index) => {
                             return (
-                                <div key={index} className='w-[69.9rem]'>
-                                    <div className='text-[4.8rem] font-[600]'>
+                                <div key={index} className={cn(
+                                    'w-[69.9rem]',
+                                    'max-tablet:w-[33rem]',
+                                    'max-mobile:w-full'
+                                )}>
+                                    <div className={cn(
+                                        'text-[4.8rem] font-[600]',
+                                        'max-tablet:text-[3.2rem]',
+                                        'max-mobile:text-[3rem]'
+                                    )}>
                                         {item.name}
                                     </div>
-                                    <Separator gray className='my-[3rem]' />
-                                    <div className='text-[1.8rem]'>
+                                    <Separator gray className={cn(
+                                        'my-[3rem]',
+                                        'max-tablet:my-[1.6rem]'
+                                    )} />
+                                    <div className={cn(
+                                        'text-[1.8rem]',
+                                        'max-tablet:text-[1.6rem]'
+                                    )}>
                                         {item.value}
                                     </div>
                                 </div>
@@ -42,22 +57,41 @@ export default function AfonInfoSection() {
                                     case 'title':
                                         return (
                                             <div key={index}>
-                                                <div className='text-[4.8rem] font-[600]'>
+                                                <div className={cn(
+                                                    'text-[4.8rem] font-[600]',
+                                                    'max-tablet:text-[3.2rem]',
+                                                    'max-mobile:text-[3rem]'
+                                                )}>
                                                     {item.value}
                                                 </div>
-                                                <Separator gray className='my-[3rem]' />
+                                                <Separator gray className={cn(
+                                                    'my-[3rem] mb-[5rem]',
+                                                    'max-tablet:my-[1.6rem]'
+                                                )} />
                                             </div>
                                         )
                                     case 'list':
                                         return (
                                             <div key={index} className='flex justify-start items-start flex-col mb-[3rem]'>
-                                                <div className='text-[3rem] font-[600] mb-[2rem]'>
+                                                <div className={cn(
+                                                    'text-[3rem] font-[600] my-[2rem]',
+                                                    'max-tablet:text-[2.5rem]',
+                                                    'max-mobile:text-[2.2rem]'
+                                                )}>
                                                     {item.name}
                                                 </div>
-                                                <ul className='cost_list text-[1.8rem]'>
+                                                <Separator gray className={cn(
+                                                    'my-[3rem]',
+                                                    'max-tablet:my-[1.6rem]'
+                                                )} />
+                                                <ul className={cn(
+                                                    'cost_list text-[1.8rem]',
+                                                    'max-tablet:text-[1.6rem]',
+                                                    'max-mobile:mb-[1.4rem]'
+                                                )}>
                                                     {
                                                         item.list?.map((li, idx) => {
-                                                            return <li key={idx}>{li}</li>
+                                                            return <li key={idx} className='leading-[1.2]'>{li}</li>
                                                         })
                                                     }
                                                 </ul>
@@ -65,24 +99,44 @@ export default function AfonInfoSection() {
                                         )
                                     case 'days':
                                         return (
-                                            <div key={index} className='flex justify-start items-start flex-col mb-[3rem] w-full'>
-                                                <div className='text-[3rem] font-[600] mb-[2rem]'>
+                                            <div key={index} className='flex justify-start items-start flex-col mb-[3rem] last-of-type:mb-0 w-full'>
+                                                <div className={cn(
+                                                    'text-[3rem] font-[600] my-[2rem]',
+                                                    'max-tablet:text-[2.5rem]',
+                                                    'max-mobile:text-[2.2rem]'
+                                                )}>
                                                     {item.name}
                                                 </div>
-                                                <Separator gray className='my-[1.6rem]' />
+                                                <Separator gray className={cn(
+                                                    'my-[3rem]',
+                                                    'max-tablet:my-[1.6rem]'
+                                                )} />
                                                 {
                                                     item.days?.map((day, idx) => {
                                                         return (
-                                                            <div key={idx} className='pl-[1rem] w-full'>
-                                                                <div className='uppercase text-[2.5rem] font-[600] mb-[1.6rem]'>
+                                                            <div key={idx} className={cn(
+                                                                'w-full mb-[5rem] last-of-type:mb-0',
+                                                                'max-mobile:mb-[2rem]'
+                                                            )}>
+                                                                <div className={cn(
+                                                                    'uppercase text-[2.5rem] font-[600] mb-[1.6rem]',
+                                                                    'max-tablet:text-[2rem]'
+                                                                )}>
                                                                     {day.name}
                                                                 </div>
-                                                                <ul className='cost_list text-[1.8rem]'>
+                                                                <Separator gray className={cn(
+                                                                    'my-[3rem]',
+                                                                    'max-tablet:my-[1.6rem]'
+                                                                )} />
+                                                                <ul className={cn(
+                                                                    'cost_list text-[1.8rem]',
+                                                                    'max-tablet:text-[1.6rem]',
+                                                                    'max-mobile:mb-[1.4rem]'
+                                                                )}>
                                                                     {day.list.map((li, id) => {
-                                                                        return <li key={id}>{li}</li>
+                                                                        return <li key={id} className='leading-[1.2]'>{li}</li>
                                                                     })}
                                                                 </ul>
-                                                                <Separator gray className='my-[2rem]' />
                                                             </div>
                                                         )
                                                     })

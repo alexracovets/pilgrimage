@@ -1,6 +1,6 @@
 import TourInfoSection from "@/components/shared/sections/tourInfoSection";
 import TourMainSection from "@/components/shared/sections/tourMainSection";
-import dataTours from "@/data/dataToursNew";
+import dataTours from "@/data/dataTours";
 import { notFound } from 'next/navigation';
 
 interface Params {

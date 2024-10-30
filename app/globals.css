@@ -63,30 +63,51 @@ button {
   pointer-events: none !important;
 }
 
+.text_shadow {
+  text-shadow: #000000 0px 0px 1px;
+}
+
 .cost_list {
   width: 100%;
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
   flex-direction: column;
-  gap: .5rem;
+  gap: 1rem;
 }
 
 .cost_list li {
   width: 100%;
   position: relative;
-  padding-left: 26px;
+  padding-left: 2.6rem;
 }
 
 .cost_list li::before {
   content: '';
   position: absolute;
-  left: 10px;
-  top: 50%;
+  left: 1rem;
+  top: 1rem;
   transform: translateY(-50%);
-  width: 6px;
-  height: 6px;
+  width: .6rem;
+  height: .6rem;
   border-radius: 50%;
   overflow: hidden;
-  background-color: #000000;
+  background-color: #FF6328;
+}
+
+@media (max-width: 1023px) {
+  .cost_list li {
+    padding-left: 2rem;
+  }
+
+  .cost_list li::before {
+    left: .75rem;
+    width: .5rem;
+    height: .5rem;
+  }
+}
+
+.custom-field a {
+  display: inline;
+  text-decoration: underline;
 }
