@@ -1,7 +1,7 @@
 'use client';
 
+import { useEffect, useRef, useState } from "react";
 import { CircleArrowRight } from "lucide-react";
-import { useState } from "react";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
@@ -10,20 +10,34 @@ import { Container } from "@/components/shared/container";
 import { Section } from "@/components/shared/section";
 import { Price } from "@/components/shared/price";
 import { Button } from "@/components/ui/button";
+import Intersection from '@/tools/intersection';
 import dataTours from "@/data/dataTours";
 
+import useHeader from '@/store/useHeader';
 
 export default function TourSection() {
+    const sectionRef = useRef<HTMLDivElement>(null);
     const [activeItems, setActiveItems] = useState(8);
     const [isBtn, setIsBtn] = useState(activeItems <= dataTours.length)
+    const setActiveLink = useHeader(state => state.setActiveLink);
 
     const handleShowMore = () => {
         setActiveItems(prev => prev + 2);
         setIsBtn(activeItems + 2 < dataTours.length);
     };
 
+    useEffect(() => {
+        if (sectionRef.current) {
+            const cleanup = Intersection(sectionRef, setActiveLink, 'toursLink');
+
+            return () => {
+                if (cleanup) cleanup();
+            };
+        }
+    }, [sectionRef, setActiveLink]);
+
     return (
-        <Section id="tours">
+        <Section ref={sectionRef} id="tours">
             <Container>
                 <h2 className={cn(
                     'text-[6.6rem] font-[700] mb-[5rem]',

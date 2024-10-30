@@ -1,10 +1,13 @@
 'use client';
 
+import { useEffect } from "react";
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
 
 import { Container } from "@/components/shared/container";
 import { Section } from "@/components/shared/section";
+
+import useHeader from '@/store/useHeader';
 
 interface Blog {
     blog: {
@@ -16,8 +19,12 @@ interface Blog {
     };
 }
 
-
 export default function BlogMainSection({ blog }: Blog) {
+    const setActiveLink = useHeader(state => state.setActiveLink);
+
+    useEffect(() => {
+        setActiveLink('blogLink');
+    }, [setActiveLink])
 
     return (
         <Section className='h-[100dvh] m-0 max-tablet:m-0 relative bg-gradient-to-t from-20% to-60% from-regal-orange to-opacity-orange'>

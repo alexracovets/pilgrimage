@@ -1,16 +1,21 @@
 'use client';
 
 import { FaInstagram, FaFacebook, FaYoutube } from "react-icons/fa";
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
 
 import { Container } from "@/components/shared/container";
+import Intersection from '@/tools/intersection';
+
+import useHeader from '@/store/useHeader';
 
 export const Footer: React.FC = () => {
-    const [isBlack, setIsBlack] = useState(false);
     const pathname = usePathname();
+    const [isBlack, setIsBlack] = useState(false);
+    const sectionRef = useRef<HTMLDivElement>(null);
+    const setActiveLink = useHeader(state => state.setActiveLink);
 
     const phone = '+380503525236';
     const post = 'pilgrimage_center@ukr.net';
@@ -35,10 +40,20 @@ export const Footer: React.FC = () => {
             setIsBlack(true);
         } else setIsBlack(false);
 
-    }, [pathname])
+    }, [pathname]);
+
+    useEffect(() => {
+        if (sectionRef.current) {
+            const cleanup = Intersection(sectionRef, setActiveLink, 'contactsLink');
+
+            return () => {
+                if (cleanup) cleanup();
+            };
+        }
+    }, [sectionRef, setActiveLink]);
 
     return (
-        <footer className={isBlack ? 'bg-regal-black' : 'bg-regal-orange'} id="contacts">
+        <footer ref={sectionRef} className={isBlack ? 'bg-regal-black' : 'bg-regal-orange'} id="contacts">
             <Container className={cn(
                 'py-[10rem] text-regal-white',
                 'max-tablet:py-[5rem]'

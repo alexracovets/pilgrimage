@@ -1,5 +1,6 @@
 'use client';
 import { CircleArrowRight } from "lucide-react";
+import { useEffect } from "react";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
@@ -12,15 +13,22 @@ import { Button } from "@/components/ui/button";
 import useIsMobile from '@/store/useIsMobile';
 import dataBlog from "@/data/dataBlog";
 
+import useHeader from '@/store/useHeader';
+
 export default function BlogSection() {
     const viewSize = useIsMobile(state => state.viewSize);
     const [activeItems, setActiveItems] = useState(4);
     const [isBtn, setIsBtn] = useState(activeItems <= dataBlog.length)
+    const setActiveLink = useHeader(state => state.setActiveLink);
 
     const handleShowMore = () => {
         setActiveItems(prev => prev + 2);
         setIsBtn(activeItems + 2 < dataBlog.length);
     };
+
+    useEffect(() => {
+        setActiveLink('blogLink');
+    }, [setActiveLink]);
 
     return (
         <Section className={cn(

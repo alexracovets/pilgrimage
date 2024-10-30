@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import { Fade as Hamburger } from 'hamburger-react';
 import { cn } from '@/lib/utils';
@@ -9,6 +9,7 @@ import Link from 'next/link';
 
 import { Drawer, DrawerContent, DrawerTitle, DrawerHeader, DrawerDescription } from "@/components/ui/drawer";
 import { Container } from "@/components/shared/container";
+import useHeader from '@/store/useHeader';
 
 export const Header: React.FC = () => {
     const [underlineStyles, setUnderlineStyles] = useState({ left: '0px', width: '0px' });
@@ -18,15 +19,44 @@ export const Header: React.FC = () => {
     const [isBlack, setIsBlack] = useState(false);
     const pathname = usePathname();
     const router = useRouter();
+    const activeLink = useHeader(state => state.activeLink);
 
     const links = [
-        { href: '/', name: 'Головна' },
-        { href: '/#about', name: 'Про нас' },
-        { href: '/#tours', name: 'Тури' },
-        { href: '/blog', name: 'Блог' },
-        { href: '/afon', name: 'Афон' },
-        { href: '#contacts', name: 'Контакти' }
+        { href: '/', name: 'Головна', id: 'mainLink' },
+        { href: '/#about', name: 'Про нас', id: 'aboutLink' },
+        { href: '/#tours', name: 'Тури', id: 'toursLink' },
+        { href: '/blog', name: 'Блог', id: 'blogLink' },
+        { href: '/afon', name: 'Афон', id: 'afonLink' },
+        { href: '#contacts', name: 'Контакти', id: 'contactsLink' }
     ];
+
+    const handleMouseEnter = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+        const linkRect = e.currentTarget.getBoundingClientRect();
+        const menuRect = menuRef.current?.getBoundingClientRect();
+        if (menuRect) {
+            setUnderlineStyles({
+                left: `${linkRect.left - menuRect.left}px`,
+                width: `${linkRect.width}px`
+            });
+        }
+    };
+
+    const handleMouseLeave = useCallback(() => {
+        const activeElement = document.getElementById(activeLink);
+        const menuRect = menuRef.current?.getBoundingClientRect();
+        if (activeElement && menuRect) {
+            const linkRect = activeElement.getBoundingClientRect();
+            setUnderlineStyles({
+                left: `${linkRect.left - menuRect.left}px`,
+                width: `${linkRect.width}px`
+            });
+        }
+    }, [activeLink]);
+
+    useEffect(() => {
+        handleMouseLeave();
+    }, [activeLink, handleMouseLeave]);
+
     const handleScroll = (e: React.MouseEvent, href: string) => {
         e.preventDefault();
         const elementId = href.split('#')[1];
@@ -65,20 +95,8 @@ export const Header: React.FC = () => {
 
     }, [pathname])
 
-    const handleMouseEnter = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
-        const linkRect = e.currentTarget.getBoundingClientRect();
-        const menuRect = menuRef.current?.getBoundingClientRect();
-        if (menuRect) {
-            setUnderlineStyles({
-                left: `${linkRect.left - menuRect.left}px`,
-                width: `${linkRect.width}px`
-            });
-        }
-    };
-
-
     return (
-        <header className={cn(
+        <header onMouseLeave={handleMouseLeave} className={cn(
             'absolute left-0 top-0 w-full py-[1rem] z-[10] bg-regal-orange transition-all duration-300 ease-in-out',
             isBlack ? 'bg-regal-black' : 'bg-regal-orange'
         )}>
@@ -126,6 +144,7 @@ export const Header: React.FC = () => {
                                         handleScroll(e, link.href);
                                     }
                                 }}
+                                id={link.id}
                                 className={cn(
                                     'uppercase text-[1.6rem] text-regal-white font-[700] p-[.8rem]',
                                     'max-tablet:text-[.8rem] max-tablet:p-[.4rem]'
@@ -146,9 +165,7 @@ export const Header: React.FC = () => {
                 </div>
 
                 <Drawer open={isMobuleMenu} onOpenChange={setIsMobuleMenu} direction='top'>
-                    <DrawerContent className={cn(
-                        ''
-                    )}>
+                    <DrawerContent>
                         <DrawerHeader className='hidden'>
                             <DrawerTitle></DrawerTitle>
                             <DrawerDescription></DrawerDescription>

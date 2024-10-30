@@ -2,6 +2,7 @@
 
 import { CalendarClock } from "lucide-react";
 import { FaStar } from "react-icons/fa";
+import { useEffect } from "react";
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
 
@@ -11,7 +12,14 @@ import { Section } from "@/components/shared/section";
 import { Price } from "@/components/shared/price";
 import { Button } from "@/components/ui/button";
 
+import useHeader from '@/store/useHeader';
+
 export default function AfonMainSection() {
+    const setActiveLink = useHeader(state => state.setActiveLink);
+
+    useEffect(() => {
+        setActiveLink('afonLink');
+    }, [setActiveLink])
 
     return (
         <Section className='h-[100dvh] m-0 max-tablet:m-0 relative'>

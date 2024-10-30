@@ -1,16 +1,33 @@
 'use client';
 
+import { useEffect, useRef } from "react";
+import { cn } from "@/lib/utils";
+import Image from "next/image";
+
 import CustomArrow from "@/components/shared/customArrow";
 import { Container } from "@/components/shared/container";
 import { Section } from "@/components/shared/section";
 import { Button } from "@/components/ui/button";
-import Image from "next/image";
-import { cn } from "@/lib/utils";
 
+import Intersection from '@/tools/intersection';
+import useHeader from '@/store/useHeader';
 
 export default function AboutSection() {
+    const sectionRef = useRef<HTMLDivElement>(null);
+    const setActiveLink = useHeader(state => state.setActiveLink);
+
+    useEffect(() => {
+        if (sectionRef.current) {
+            const cleanup = Intersection(sectionRef, setActiveLink, 'aboutLink');
+
+            return () => {
+                if (cleanup) cleanup();
+            };
+        }
+    }, [sectionRef, setActiveLink]);
+
     return (
-        <Section id='about'>
+        <Section id='about' ref={sectionRef}>
             <Container>
                 <div className="flex justify-between items-center">
                     <div className={cn(
