@@ -30,7 +30,7 @@ const config: Config = {
 			},
 			boxShadow: {
 				'card': '0 0 .5rem .1rem #3e3d3a59',
-				'cardHover':'0 0 1rem 0.5rem #3e3d3a59'
+				'cardHover':'0 0 1rem 0.5rem #3e3d3a3d'
 			}
 		}
 	},
