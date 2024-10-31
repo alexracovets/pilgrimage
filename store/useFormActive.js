@@ -2,7 +2,7 @@ import { create } from 'zustand';
 import { immer } from 'zustand/middleware/immer';
 
 const useFormActive = create(immer((set) => ({
-    isActive: true,
+    isActive: false,
     formFrom: '',
     setIsActive: (value) => set((state) => {
         state.isActive = value;

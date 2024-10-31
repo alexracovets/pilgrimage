@@ -68,6 +68,7 @@ export const FormModal: React.FC = () => {
 
         if (response.ok) {
             setIsActive(false);
+            console.log('форма відправлена')
         } else console.log(userForm)
     }
 
