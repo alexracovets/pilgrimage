@@ -10,7 +10,7 @@ const config: Config = {
 	],
 	theme: {
 		screens: {
-			'tablet': '1024px',
+			'tablet': '1030px',
 			'mobile': '540px',
 		},
 		extend: {

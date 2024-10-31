@@ -43,8 +43,8 @@ export default function BlogSection() {
 
     return (
         <Section ref={sectionRef} className={cn(
-            'mt-[15.5rem] mb-[5rem]',
-            'max-tablet:mt-[11.2rem]'
+            'pt-[15.5rem] mb-[5rem]',
+            'max-tablet:pt-[11.2rem]'
         )}>
             <Container>
                 <h1 className={cn(
@@ -68,7 +68,7 @@ export default function BlogSection() {
 
                             if (viewSize <= 1023 && viewSize > 539) {
                                 countTitle = 45;
-                                countDescription = 165;
+                                countDescription = 60;
                             } else if (viewSize <= 539) {
                                 countTitle = 40;
                                 countDescription = 40;
@@ -93,7 +93,7 @@ export default function BlogSection() {
                                 <Link href={`/blog/${item.page}`} key={index} className={cn(
                                     'relative transition-all duration-300 ease-in-out bg-regal-white shadow-card hover:shadow-cardHover hover:scale-[1.05] hover:z-[1]',
                                     'flex justify-start items-start flex-col w-[69.9rem] h-[56.8rem] rounded-[2rem] border-regal-gray border-[.2rem]',
-                                    'max-tablet:w-[32.9rem] max-tablet:h-[52.2rem]',
+                                    'max-tablet:w-[32.9rem] max-tablet:h-[60.2rem]',
                                     'max-mobile:w-full max-mobile:h-auto'
                                 )}>
                                     <div className={cn(

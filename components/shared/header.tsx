@@ -12,16 +12,18 @@ import { Drawer, DrawerContent, DrawerTitle, DrawerHeader, DrawerDescription } f
 import { Container } from "@/components/shared/container";
 
 import useHeader from '@/store/useHeader';
+import useFormActive from '@/store/useFormActive';
 
 export const Header: React.FC = () => {
-    const [underlineStyles, setUnderlineStyles] = useState({ left: '0px', width: '0px' });
     const menuRef = useRef<HTMLDivElement>(null);
+    const [underlineStyles, setUnderlineStyles] = useState({ left: '0px', width: '0px' });
     const [scrollTarget, setScrollTarget] = useState<string | null>(null);
     const [isMobuleMenu, setIsMobuleMenu] = useState(false);
     const [isBlack, setIsBlack] = useState(false);
     const pathname = usePathname();
     const router = useRouter();
     const activeLink = useHeader(state => state.activeLink);
+    const isActiveForm = useFormActive(state => state.isActive);
 
     const links = [
         { href: '/', name: 'Головна', id: 'mainLink' },
@@ -103,7 +105,8 @@ export const Header: React.FC = () => {
                 <div
                     className={cn(
                         'w-full py-[1rem] z-[10] bg-regal-orange transition-all duration-300 ease-in-out m-0',
-                        isBlack ? 'bg-regal-black' : 'bg-regal-orange'
+                        isBlack ? 'bg-regal-black' : 'bg-regal-orange',
+                        isActiveForm ? 'bg-[transperant]' : ''
                     )}
                 >
                     <Container className='flex justify-between items-center'>
@@ -134,7 +137,8 @@ export const Header: React.FC = () => {
                         </div>
                         <div className={cn(
                             'menu-wrapper',
-                            'max-mobile:hidden'
+                            'max-mobile:hidden',
+                            isActiveForm ? 'opacity-0' : 'opacity-1'
                         )} ref={menuRef}>
                             <nav className={cn(
                                 'flex justify-start items-center gap-[7rem]',

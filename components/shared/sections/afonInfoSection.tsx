@@ -9,14 +9,17 @@ import { Section } from "@/components/shared/section";
 import { Separator } from '@/components/ui/separator';
 import { Button } from "@/components/ui/button";
 
+import useFormActive from '@/store/useFormActive';
 import Intersection from '@/tools/intersection';
 import useHeader from '@/store/useHeader';
 import dataAfon from '@/data/dataAfon';
 
 export default function AfonInfoSection() {
-    const sectionRef = useRef<HTMLDivElement>(null);
+    const setFormFrome = useFormActive(state => state.setFormFrome);
+    const setIsActive = useFormActive(state => state.setIsActive);
     const setActiveLink = useHeader(state => state.setActiveLink);
     const [isBtnHovered, setIsBtnHovered] = useState(false);
+    const sectionRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         if (sectionRef.current) {
@@ -170,6 +173,7 @@ export default function AfonInfoSection() {
                 <Button
                     onMouseEnter={() => setIsBtnHovered(true)}
                     onMouseLeave={() => setIsBtnHovered(false)}
+                    onClick={() => { setIsActive(true); setFormFrome('Афон'); }}
                     variant='outline_orange'
                     className={cn(
                         'flex justify-center items-center mx-auto',

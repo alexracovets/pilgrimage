@@ -47,6 +47,7 @@ export const MainSlider: React.FC<Props> = ({ slides }) => {
         >
             <CarouselContent className={cn(
                 'w-full h-[100dvh]',
+                'max-tablet:h-[58.2rem]',
                 'max-mobile:h-[35.142rem]'
             )}>
                 {

@@ -9,13 +9,16 @@ import { Container } from "@/components/shared/container";
 import { Section } from "@/components/shared/section";
 import { Button } from "@/components/ui/button";
 
+import useFormActive from '@/store/useFormActive';
 import Intersection from '@/tools/intersection';
 import useHeader from '@/store/useHeader';
 
 export default function AboutSection() {
-    const sectionRef = useRef<HTMLDivElement>(null);
+    const setIsActive = useFormActive(state => state.setIsActive);
+    const setFormFrome = useFormActive(state => state.setFormFrome);
     const setActiveLink = useHeader(state => state.setActiveLink);
     const [isBtnHovered, setIsBtnHovered] = useState(false);
+    const sectionRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         if (sectionRef.current) {
@@ -60,6 +63,7 @@ export default function AboutSection() {
                         <Button
                             onMouseEnter={() => setIsBtnHovered(true)}
                             onMouseLeave={() => setIsBtnHovered(false)}
+                            onClick={() => { setIsActive(true); setFormFrome("Про нас"); }}
                             variant='outline_orange'
                             className={cn(
                                 'flex justify-center items-center pointer-events-auto ',

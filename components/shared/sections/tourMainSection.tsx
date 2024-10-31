@@ -11,6 +11,7 @@ import { Section } from "@/components/shared/section";
 import { Price } from "@/components/shared/price";
 import { Button } from "@/components/ui/button";
 
+import useFormActive from '@/store/useFormActive';
 import Intersection from '@/tools/intersection';
 import useHeader from '@/store/useHeader';
 
@@ -28,9 +29,11 @@ interface StartTourSectionProps {
 }
 
 export default function TourMainSection({ tour }: StartTourSectionProps) {
-    const sectionRef = useRef<HTMLDivElement>(null);
+    const setFormFrome = useFormActive(state => state.setFormFrome);
+    const setIsActive = useFormActive(state => state.setIsActive);
     const setActiveLink = useHeader(state => state.setActiveLink);
     const [isBtnHovered, setIsBtnHovered] = useState(false);
+    const sectionRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         if (sectionRef.current) {
@@ -42,7 +45,11 @@ export default function TourMainSection({ tour }: StartTourSectionProps) {
     }, [setActiveLink]);
 
     return (
-        <Section ref={sectionRef} className='h-[100dvh] m-0 max-tablet:m-0 relative'>
+        <Section ref={sectionRef} className={cn(
+            'h-[100dvh] m-0 max-tablet:m-0 relative',
+            'max-tablet:h-[58.2rem]',
+            'max-mobile:h-[35.142rem]'
+        )}>
             <Image src={`/main/bg/${tour.page}.jpg`} fill priority alt='bg' className="object-cover z-[-1]" />
             <Container className={cn(
                 'flex justify-end items-end w-ful h-full pt-[11rem] pb-[8rem] flex',
@@ -103,6 +110,7 @@ export default function TourMainSection({ tour }: StartTourSectionProps) {
                     <Button
                         onMouseEnter={() => setIsBtnHovered(true)}
                         onMouseLeave={() => setIsBtnHovered(false)}
+                        onClick={() => { setIsActive(true); setFormFrome(tour.country); }}
                         variant='secondary'
                         className={cn(
                             'flex justify-center items-center',

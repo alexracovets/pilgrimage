@@ -9,6 +9,7 @@ import { Section } from "@/components/shared/section";
 import { Separator } from '@/components/ui/separator';
 import { Button } from "@/components/ui/button";
 
+import useFormActive from '@/store/useFormActive';
 import Intersection from '@/tools/intersection';
 import useHeader from '@/store/useHeader';
 
@@ -49,9 +50,11 @@ interface StartTourSectionProps {
 }
 
 export default function TourInfoSection({ tour }: StartTourSectionProps) {
-    const sectionRef = useRef<HTMLDivElement>(null);
+    const setFormFrome = useFormActive(state => state.setFormFrome);
+    const setIsActive = useFormActive(state => state.setIsActive);
     const setActiveLink = useHeader(state => state.setActiveLink);
     const [isBtnHovered, setIsBtnHovered] = useState(false);
+    const sectionRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         if (sectionRef.current) {
@@ -205,6 +208,7 @@ export default function TourInfoSection({ tour }: StartTourSectionProps) {
                 <Button
                     onMouseEnter={() => setIsBtnHovered(true)}
                     onMouseLeave={() => setIsBtnHovered(false)}
+                    onClick={() => { setIsActive(true); setFormFrome(tour.country); }}
                     variant='outline_orange'
                     className={cn(
                         'flex justify-center items-center mx-auto',

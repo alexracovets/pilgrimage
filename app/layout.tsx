@@ -26,13 +26,15 @@ const imb = IBM_Plex_Sans({
 })
 
 import "./globals.css";
+import { FormModal } from '@/components/modal/formModal';
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode; }>) {
   return (
     <html lang="ua">
       <body className={`${oswald.variable} ${imb.variable}`}>
         <Header />
-        <main>
+        <main className='relative'>
           {children}
+          <FormModal />
         </main>
         <Footer />
         <CheckIsMobile />

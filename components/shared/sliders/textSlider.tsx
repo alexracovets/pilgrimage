@@ -41,7 +41,7 @@ export const TextSlider: React.FC<Props> = ({ slides }) => {
 
     return (
         <Carousel className={cn(
-            'w-[52rem] relative z-[1]',
+            'w-[52rem]',
             'max-tablet:w-[33.2rem] max-tablet:mr-[2.2rem] max-tablet:mb-[5.8rem]',
             'max-mobile:w-full max-mobile:m-0'
         )}

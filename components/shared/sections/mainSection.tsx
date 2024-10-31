@@ -33,12 +33,13 @@ export default function MainSection() {
     <Section
       ref={sectionRef}
       className={cn(
-        'h-[100dvh] m-0 max-tablet:m-0 mt-[10rem]',
+        'h-[100dvh] m-0 max-tablet:m-0 pt-[10rem]',
+        'max-tablet:h-[58.2rem]',
         'max-mobile:h-auto'
       )}>
       <MainSlider slides={dataTours} />
       <Container className={cn(
-        'flex justify-center items-end w-full h-full pt-[8rem] pb-[8rem]',
+        'flex justify-center items-start w-full h-full pt-[8rem] pb-[8rem]',
         'max-tablet:pb-[3.6rem]',
         'max-mobile:pt-[37.142rem]'
       )}>

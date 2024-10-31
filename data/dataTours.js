@@ -467,7 +467,7 @@ const dataTours = [
     },
     {
         page: 'transcarpathia',
-        country: 'ЗАКАРПАТТЯ',
+        country: 'Закарпаття',
         tourName: '',
         price: '',
         duration: '',
@@ -624,7 +624,7 @@ const dataTours = [
     },
     {
         page: 'romania',
-        country: 'РУМУНІЯ',
+        country: 'Румунія',
         tourName: 'Паломницький тур',
         price: '130 €',
         duration: '4 Дні',
@@ -717,7 +717,7 @@ const dataTours = [
     },
     {
         page: 'hungary',
-        country: 'УГОРЩИНА',
+        country: 'Угорщина',
         tourName: 'Паломницько-оздоровчий тур',
         price: '140 €',
         duration: '4 Дні',

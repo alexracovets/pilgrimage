@@ -23,12 +23,12 @@ const buttonVariants = cva(
           'max-mobile:text-[1.6rem]'
         ),
         outline: cn(
-          'uppercase border-[0.1rem] rounded-[5rem] text-[2.4rem]',
+          'uppercase border-[0.2rem] rounded-[5rem] text-[2.4rem]',
           'max-tablet:text-[1.2rem]',
           'max-mobile:text-[1.6rem]'
         ),
         outline_orange: cn(
-          'uppercase border-[0.1rem] rounded-[5rem] border-regal-orange text-[2.4rem]',
+          'uppercase border-[0.2rem] rounded-[5rem] border-regal-orange text-[2.4rem]',
           'max-tablet:text-[1.2rem]',
           'max-mobile:text-[1.6rem]'
         ),

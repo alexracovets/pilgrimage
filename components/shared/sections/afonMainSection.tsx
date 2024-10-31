@@ -12,13 +12,16 @@ import { Section } from "@/components/shared/section";
 import { Price } from "@/components/shared/price";
 import { Button } from "@/components/ui/button";
 
+import useFormActive from '@/store/useFormActive';
 import Intersection from '@/tools/intersection';
 import useHeader from '@/store/useHeader';
 
 export default function AfonMainSection() {
-    const sectionRef = useRef<HTMLDivElement>(null);
+    const setFormFrome = useFormActive(state => state.setFormFrome);
+    const setIsActive = useFormActive(state => state.setIsActive);
     const setActiveLink = useHeader(state => state.setActiveLink);
     const [isBtnHovered, setIsBtnHovered] = useState(false);
+    const sectionRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         if (sectionRef.current) {
@@ -31,7 +34,11 @@ export default function AfonMainSection() {
     }, [sectionRef, setActiveLink]);
 
     return (
-        <Section ref={sectionRef} className='h-[100dvh] m-0 max-tablet:m-0 relative overflow-hidden'>
+        <Section ref={sectionRef} className={cn(
+            'h-[100dvh] m-0 max-tablet:m-0 relative overflow-hidden',
+            'max-tablet:h-[58.2rem]',
+            'max-mobile:h-[45.142rem]'
+        )}>
             <Image src='/img/afon_main.jpg' alt='afon' fill priority className="object-cover object-left-top z-[-1]" />
             <Container className={cn(
                 'flex justify-end items-start w-ful h-full pt-[10rem] pb-[2rem] flex',
@@ -102,6 +109,7 @@ export default function AfonMainSection() {
                     <Button
                         onMouseEnter={() => setIsBtnHovered(true)}
                         onMouseLeave={() => setIsBtnHovered(false)}
+                        onClick={() => { setIsActive(true); setFormFrome('Афон'); }}
                         variant='destructive'
                         className={cn(
                             'flex justify-center items-center',
