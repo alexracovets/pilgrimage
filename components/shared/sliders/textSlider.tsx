@@ -4,12 +4,13 @@ import { Carousel, CarouselContent, CarouselItem, CarouselApi } from '@/componen
 import { CalendarClock } from "lucide-react";
 import { useEffect, useState } from 'react';
 import Fade from 'embla-carousel-fade';
+import { cn } from '@/lib/utils';
+import Link from 'next/link';
 
 import CustomArrow from "@/components/shared/customArrow";
 import { Price } from "@/components/shared/price";
 import { Button } from "@/components/ui/button";
 import useMainSlider from '@/store/useMainSlider';
-import { cn } from '@/lib/utils';
 
 interface Slide {
     page: string;
@@ -27,9 +28,10 @@ interface Props {
 export const TextSlider: React.FC<Props> = ({ slides }) => {
     const prevSlider = useMainSlider(state => state.prevSlider);
     const [api, setApi] = useState<CarouselApi>();
+    const [isBtnHovered, setIsBtnHovered] = useState(false);
     const sliderOptions = {
         duration: 60,
-        startIndex: slides.length - 1
+        startIndex: slides.length
     };
 
     useEffect(() => {
@@ -39,7 +41,7 @@ export const TextSlider: React.FC<Props> = ({ slides }) => {
 
     return (
         <Carousel className={cn(
-            'w-[52rem]',
+            'w-[52rem] relative z-[1]',
             'max-tablet:w-[33.2rem] max-tablet:mr-[2.2rem] max-tablet:mb-[5.8rem]',
             'max-mobile:w-full max-mobile:m-0'
         )}
@@ -52,17 +54,17 @@ export const TextSlider: React.FC<Props> = ({ slides }) => {
                     slides.map((item, index) => {
                         return (
                             <CarouselItem key={index} className={cn(
-                                'flex flex-col w-full justify-start items-start'
+                                'flex flex-col w-full justify-start items-start pointer-events-none'
                             )}>
                                 <div className={cn(
-                                    'text-[2.6rem] text-regal-white mb-[1.8rem]',
+                                    'text-[2.6rem] text-regal-white mb-[1.8rem] text_shadow',
                                     'max-tablet:text-[1.2rem] max-tablet:mb-[.88rem]',
                                     'max-mobile:text-[1.4rem] max-mobile:mb-[.97rem]'
                                 )}>
                                     {item.tourName}
                                 </div>
                                 <div className={cn(
-                                    'uppercase text-[10.8rem] tracking-[-.3rem] text-regal-white font-oswald font-[500] mb-[2.8rem]',
+                                    'uppercase text-[10.8rem] tracking-[-.3rem] text-regal-white font-oswald font-[500] mb-[2.8rem] text_shadow',
                                     'max-tablet:text-[6.8rem] max-tablet:mb-[1.4rem]',
                                     'max-mobile:text-[5.6rem] max-mobile:mb-[1.5rem] '
                                 )}>
@@ -73,14 +75,14 @@ export const TextSlider: React.FC<Props> = ({ slides }) => {
                                     'max-tablet:mb-[1.4rem]'
                                 )}>
                                     <Price className={cn(
-                                        'mr-[3.8rem]',
+                                        'mr-[3.8rem] text_shadow',
                                         'max-tablet:mr-[1.85rem] max-tablet:text-[1.2rem] max-tablet:p-0 max-tablet:w-[6.8rem] max-tablet:h-[2.4rem] max-tablet:flex max-tablet:justify-center max-tablet:items-center',
                                         'max-mobile:w-[7.9rem] max-mobile:h-[2.339rem] max-mobile:text-[1.4rem]'
                                     )}>
                                         {item.price}
                                     </Price>
                                     <div className={cn(
-                                        'flex justify-start items-center uppercase text-regal-white text-[1.8rem]',
+                                        'flex justify-start items-center uppercase text-regal-white text-[1.8rem] text_shadow',
                                         'max-tablet:text-[1.2rem]'
                                     )}>
                                         <CalendarClock
@@ -95,15 +97,31 @@ export const TextSlider: React.FC<Props> = ({ slides }) => {
                                     </div>
                                 </div>
                                 <div className={cn(
-                                    'text-[1.6rem] text-regal-white leading-[2.08rem] mb-[2.8rem]',
+                                    'text-[1.6rem] text-regal-white leading-[2.08rem] mb-[2.8rem] text_shadow',
                                     'max-tablet:text-[1rem] max-tablet:leading-[1.3rem] max-tablet:mb-[1.4rem]'
                                 )}>
                                     {item.description}
                                 </div>
-                                <Button variant='outline' className="flex justify-center items-center">
-                                    <CustomArrow />
-                                    <span className="text-regal-white">Детальніше</span>
-                                </Button>
+                                <Link href={`/tours/${item.page}`}>
+                                    <Button
+                                        onMouseEnter={() => setIsBtnHovered(true)}
+                                        onMouseLeave={() => setIsBtnHovered(false)}
+                                        variant='outline'
+                                        className={cn(
+                                            'flex justify-center items-center ml-[2rem] pointer-events-auto ',
+                                            isBtnHovered ? 'bg-regal-white' : ''
+                                        )}
+                                    >
+                                        <CustomArrow hover={isBtnHovered} />
+                                        <span className={cn(
+                                            'transition-all duration-300 ease-in-out',
+                                            isBtnHovered ? 'translate-x-[-3.15rem] text-regal-orange max-tablet:translate-x-[-1.5rem] max-mobile:translate-x-[-1.65rem]' : 'text-regal-white translate-x-0 text_shadow'
+                                        )}>
+                                            Детальніше
+                                        </span>
+                                    </Button>
+                                </Link>
+
                             </CarouselItem>
                         )
                     })

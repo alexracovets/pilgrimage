@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
   cn(
-    'px-[3.8rem] py-[1.5rem] w-auto',
+    'px-[3.8rem] py-[1.5rem] w-auto transition-all duration-300 ease-in-out',
     'max-tablet:px-[2rem] max-tablet:py-[1rem]'
   ),
   {

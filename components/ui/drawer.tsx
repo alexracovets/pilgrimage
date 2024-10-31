@@ -24,8 +24,6 @@ const DrawerTrigger = DrawerPrimitive.Trigger
 
 const DrawerPortal = DrawerPrimitive.Portal
 
-const DrawerClose = DrawerPrimitive.Close
-
 const DrawerOverlay = React.forwardRef<
   React.ElementRef<typeof DrawerPrimitive.Overlay>,
   React.ComponentPropsWithoutRef<typeof DrawerPrimitive.Overlay>
@@ -50,12 +48,12 @@ const DrawerContent = React.forwardRef<
       <DrawerPrimitive.Content
         ref={ref}
         className={cn(
-          "fixed z-1 flex h-auto flex-col bg-regal-green pointer-events-none",
+          "fixed z-1 flex h-auto flex-col bg-regal-green pointer-events-none ease-in",
           (!direction || direction === "bottom") && "inset-x-0 bottom-0 mt-24 ",
           direction === "right" && "top-0 right-0 w-screen w-full h-full",
           direction === "top" && "top-0 left-0 w-screen w-full h-full",
           className
-        )} 
+        )}
         {...props}
       >
         {children}
@@ -116,10 +114,8 @@ DrawerDescription.displayName = DrawerPrimitive.Description.displayName
 
 export {
   Drawer,
-  DrawerPortal,
   DrawerOverlay,
   DrawerTrigger,
-  DrawerClose,
   DrawerContent,
   DrawerHeader,
   DrawerFooter,

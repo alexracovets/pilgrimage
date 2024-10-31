@@ -30,7 +30,7 @@ export const MainSlider: React.FC<Props> = ({ slides }) => {
     const [api, setApi] = useState<CarouselApi>();
     const sliderOptions = {
         duration: 60,
-        startIndex: slides.length - 1
+        startIndex: 8
     };
 
     useEffect(() => {
@@ -40,7 +40,7 @@ export const MainSlider: React.FC<Props> = ({ slides }) => {
 
     return (
         <Carousel
-            className="absolute left-0 top-0 w-full h-full z-[-1]"
+            className="absolute left-0 top-0 w-full h-full z-[-1] max-mobile:z-[0] pointer-events-none"
             setApi={setApi}
             opts={sliderOptions}
             plugins={[Fade()]}
@@ -53,7 +53,7 @@ export const MainSlider: React.FC<Props> = ({ slides }) => {
                     slides.map((item, index) => {
                         return (
                             <CarouselItem key={index} className={cn(
-                                'relative left-0 top-0 w-full h-full',
+                                'relative left-0 top-0 w-full h-full pointer-events-none',
                                 'max-mobile:pt-[10rem] max-mobile:px-[2rem]'
                             )}>
                                 <Image src={`/main/bg/${item.page}.jpg`} fill priority alt='bg' className="object-cover" />

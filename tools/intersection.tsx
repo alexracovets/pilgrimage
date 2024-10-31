@@ -11,10 +11,9 @@ const Intersection = (sectionRef: RefObject<HTMLDivElement>, state: (value: stri
         const entry = entries[0];
         if (entry.isIntersecting) {
             state(value);
-            console.log(`Section ${value} is in view`);
         }
     }, {
-        rootMargin: '-50% 0px -50% 0px', // Спрацьовує, коли секція знаходиться по центру екрану
+        rootMargin: '-50% 0px -50% 0px',
     });
 
     observer.observe(sectionElement);

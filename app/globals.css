@@ -2,10 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  font-family: var(--font-imb);
-}
-
 @layer utilities {
   .text-balance {
     text-wrap: balance;
@@ -47,7 +43,25 @@ html {
 }
 
 body {
+  font-family: var(--font-imb);
   min-height: 100dvh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+body::-webkit-scrollbar {
+  width: 3px;
+  position: absolute;
+}
+
+body::-webkit-scrollbar-track {
+  background: #FFFFFF;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: #FF6328;
+  border: none;
+  cursor: pointer;
 }
 
 a,

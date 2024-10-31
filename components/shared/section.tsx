@@ -13,8 +13,8 @@ export const Section = forwardRef<HTMLDivElement, React.PropsWithChildren<Props>
         return (
             <section
                 className={cn(
-                    'my-[10rem] relative overflow-hidden',
-                    'max-tablet:my-[5rem]',
+                    'py-[5rem] relative overflow-x-hidden w-full',
+                    'max-tablet:py-[2.5rem]',
                     className
                 )}
                 ref={ref}

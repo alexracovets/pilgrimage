@@ -2,16 +2,21 @@
 
 import { FaStar } from "react-icons/fa";
 import { cn } from "@/lib/utils";
+import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 import CustomArrow from "@/components/shared/customArrow";
 import { Container } from "@/components/shared/container";
 import { Section } from "@/components/shared/section";
 import { Button } from "@/components/ui/button";
 
+
 export default function AfonSection() {
+    const [isBtnHovered, setIsBtnHovered] = useState(false);
+
     return (
-        <Section>
+        <Section className="pb-[10rem] max-tablet:pb-[5rem]">
             <Container>
                 <div className={cn(
                     'relative w-full h-[45.8rem] rounded-[2rem] border-[.6rem] border-regal-orange overflow-hidden p-[9rem] text-regal-white',
@@ -55,14 +60,28 @@ export default function AfonSection() {
                     )}>
                         Паломницький центр Православної Церкви України запрошує вас здійснити духовну подорож на Святу Гору Афон — одне з найвеличніших святих місць православного світу.
                     </p>
-                    <Button className={cn(
-                        'flex justify-center items-center',
-                        'max-mobile:bg-regal-white'
-                    )}>
-                        <CustomArrow className='max-mobile:hidden' />
-                        <CustomArrow color="#FF6328" className='hidden max-mobile:block' />
-                        <span className="max-mobile:text-regal-orange">Детальніше</span>
-                    </Button>
+                    <Link href='/afon'>
+                        <Button
+                            onMouseEnter={() => setIsBtnHovered(true)}
+                            onMouseLeave={() => setIsBtnHovered(false)}
+                            className={cn(
+                                'flex justify-center items-center pointer-events-auto max-mobile:bg-regal-white',
+                                isBtnHovered ? 'bg-regal-white max-mobile:bg-regal-orange' : ''
+                            )}
+                        >
+                            <CustomArrow hover={isBtnHovered} className='max-mobile:hidden' />
+                            <CustomArrow hover={isBtnHovered} color="#FF6328" className='hidden max-mobile:block' />
+                            <span className={cn(
+                                'transition-all duration-300 ease-in-out',
+                                isBtnHovered ?
+                                    'translate-x-[-3.15rem] text-regal-orange max-tablet:translate-x-[-1.5rem] max-mobile:translate-x-[-1.65rem] max-mobile:text-regal-white'
+                                    :
+                                    'text-regal-white translate-x-0 max-mobile:text-regal-orange'
+                            )}>
+                                Детальніше
+                            </span>
+                        </Button>
+                    </Link>
                 </div>
             </Container>
         </Section>

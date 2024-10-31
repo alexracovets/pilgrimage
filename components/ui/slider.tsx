@@ -13,7 +13,7 @@ const Slider = React.forwardRef<
     ref={ref}
     className={cn(
       "relative flex w-full touch-none select-none items-center cursor-pointer",
-      'max-tablet:w-[33rem]',
+      'max-tablet:w-[30rem]',
       'max-mobile:w-[28rem]',
       className
     )}

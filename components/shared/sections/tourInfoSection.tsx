@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { cn } from '@/lib/utils';
 
 import CustomArrow from "@/components/shared/customArrow";
@@ -51,6 +51,7 @@ interface StartTourSectionProps {
 export default function TourInfoSection({ tour }: StartTourSectionProps) {
     const sectionRef = useRef<HTMLDivElement>(null);
     const setActiveLink = useHeader(state => state.setActiveLink);
+    const [isBtnHovered, setIsBtnHovered] = useState(false);
 
     useEffect(() => {
         if (sectionRef.current) {
@@ -201,11 +202,25 @@ export default function TourInfoSection({ tour }: StartTourSectionProps) {
                         }
                     </div>
                 </div>
-                <Button variant='outline_orange' className={cn(
-                    'flex justify-center items-center mx-auto'
-                )}>
-                    <CustomArrow color="#FF6328" />
-                    <span className="text-regal-orange">Замовити тур</span>
+                <Button
+                    onMouseEnter={() => setIsBtnHovered(true)}
+                    onMouseLeave={() => setIsBtnHovered(false)}
+                    variant='outline_orange'
+                    className={cn(
+                        'flex justify-center items-center mx-auto',
+                        isBtnHovered ? 'bg-regal-orange' : ''
+                    )}
+                >
+                    <CustomArrow hover={isBtnHovered} color="#FF6328" />
+                    <span className={cn(
+                        'transition-all duration-300 ease-in-out',
+                        isBtnHovered ?
+                            'text-regal-white translate-x-[-3.15rem] max-tablet:translate-x-[-1.5rem] max-mobile:translate-x-[-1.65rem]'
+                            :
+                            'text-regal-orange translate-x-0'
+                    )}>
+                        Замовити тур
+                    </span>
                 </Button>
             </Container>
         </Section>

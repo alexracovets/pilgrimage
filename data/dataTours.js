@@ -161,7 +161,7 @@ const dataTours = [
         tourName: 'Паломницький відпочинковий тур',
         price: '490 €',
         duration: '9 Днів',
-        description: 'Запрошуємо Ваших діток духовно збагатитись та оздоровитись на морі в дитячому таборі «SUNRISE» в селищі Ахелой у Болгарії.',
+        description: '',
         more: {
             items: [
                 {
@@ -304,7 +304,7 @@ const dataTours = [
         tourName: 'Паломницький тур',
         price: '445 €',
         duration: '8 Днів',
-        description: 'Запрошуємо Ваших діток духовно збагатитись та оздоровитись на морі в дитячому таборі «SUNRISE» в селищі Ахелой у Болгарії.',
+        description: '',
         more: {
             items: [
                 {
@@ -471,7 +471,7 @@ const dataTours = [
         tourName: '',
         price: '',
         duration: '',
-        description: 'Запрошуємо Ваших діток духовно збагатитись та оздоровитись на морі в дитячому таборі «SUNRISE» в селищі Ахелой у Болгарії.',
+        description: '',
         more: {
             items: [
                 {
@@ -531,7 +531,7 @@ const dataTours = [
         tourName: 'Паломницький тур',
         price: '150 €',
         duration: '4 Дні',
-        description: 'Запрошуємо Ваших діток духовно збагатитись та оздоровитись на морі в дитячому таборі «SUNRISE» в селищі Ахелой у Болгарії.',
+        description: '',
         more: {
             items: [
                 {
@@ -721,7 +721,7 @@ const dataTours = [
         tourName: 'Паломницько-оздоровчий тур',
         price: '140 €',
         duration: '4 Дні',
-        description: 'Запрошуємо Ваших діток духовно збагатитись та оздоровитись на морі в дитячому таборі «SUNRISE» в селищі Ахелой у Болгарії.',
+        description: '',
         more: {
             items: [
                 {
@@ -824,7 +824,7 @@ const dataTours = [
         tourName: '',
         price: '',
         duration: '',
-        description: 'Запрошуємо Ваших діток духовно збагатитись та оздоровитись на морі в дитячому таборі «SUNRISE» в селищі Ахелой у Болгарії.',
+        description: '',
         more: {
             items: [
                 {
@@ -884,7 +884,7 @@ const dataTours = [
         tourName: 'Паломницький тур',
         price: '990 €',
         duration: '9 Днів',
-        description: 'Запрошуємо Ваших діток духовно збагатитись та оздоровитись на морі в дитячому таборі «SUNRISE» в селищі Ахелой у Болгарії.',
+        description: '',
         more: {
             items: [
                 {

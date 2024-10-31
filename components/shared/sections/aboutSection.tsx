@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 
@@ -15,6 +15,7 @@ import useHeader from '@/store/useHeader';
 export default function AboutSection() {
     const sectionRef = useRef<HTMLDivElement>(null);
     const setActiveLink = useHeader(state => state.setActiveLink);
+    const [isBtnHovered, setIsBtnHovered] = useState(false);
 
     useEffect(() => {
         if (sectionRef.current) {
@@ -27,7 +28,7 @@ export default function AboutSection() {
     }, [sectionRef, setActiveLink]);
 
     return (
-        <Section id='about' ref={sectionRef}>
+        <Section id='about' ref={sectionRef} className="pt-[10rem] max-tablet:pt-[5rem]">
             <Container>
                 <div className="flex justify-between items-center">
                     <div className={cn(
@@ -55,9 +56,23 @@ export default function AboutSection() {
                         )}>
                             Ми створюємо комфортні умови для подорожей, щоб кожен паломник міг зосередитися на головному — молитві та духовному збагаченні. Наша місія — супроводжувати вас на шляху до святих місць та допомогти відчути благословення, яке несе з собою паломництво.
                         </p>
-                        <Button variant='outline_orange' className="flex justify-center items-center">
-                            <CustomArrow color="#FF6328" />
-                            <span className="text-regal-orange">Зв’язатись з нами</span>
+
+                        <Button
+                            onMouseEnter={() => setIsBtnHovered(true)}
+                            onMouseLeave={() => setIsBtnHovered(false)}
+                            variant='outline_orange'
+                            className={cn(
+                                'flex justify-center items-center pointer-events-auto ',
+                                isBtnHovered ? 'bg-regal-orange' : ''
+                            )}
+                        >
+                            <CustomArrow hover={isBtnHovered} color="#FF6328" />
+                            <span className={cn(
+                                'transition-all duration-300 ease-in-out',
+                                isBtnHovered ? 'translate-x-[-3.15rem] max-tablet:translate-x-[-1.5rem] max-mobile:translate-x-[-1.65rem] text-regal-white' : 'text-regal-orange translate-x-0'
+                            )}>
+                                Зв’язатись з нами
+                            </span>
                         </Button>
                     </div>
                     <div className={cn(

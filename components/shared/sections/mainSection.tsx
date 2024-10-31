@@ -33,7 +33,7 @@ export default function MainSection() {
     <Section
       ref={sectionRef}
       className={cn(
-        'h-[100dvh] m-0 max-tablet:m-0',
+        'h-[100dvh] m-0 max-tablet:m-0 mt-[10rem]',
         'max-mobile:h-auto'
       )}>
       <MainSlider slides={dataTours} />

@@ -71,7 +71,7 @@ export default function BlogSection() {
                                 countDescription = 165;
                             } else if (viewSize <= 539) {
                                 countTitle = 40;
-                                countDescription = 165;
+                                countDescription = 40;
                             } else {
                                 countTitle = 73;
                                 countDescription = 159;
@@ -91,9 +91,10 @@ export default function BlogSection() {
 
                             return (
                                 <Link href={`/blog/${item.page}`} key={index} className={cn(
+                                    'relative transition-all duration-300 ease-in-out bg-regal-white shadow-card hover:shadow-cardHover hover:scale-[1.05] hover:z-[1]',
                                     'flex justify-start items-start flex-col w-[69.9rem] h-[56.8rem] rounded-[2rem] border-regal-gray border-[.2rem]',
                                     'max-tablet:w-[32.9rem] max-tablet:h-[52.2rem]',
-                                    'max-mobile:w-full max-mobile:h-[56.6rem]'
+                                    'max-mobile:w-full max-mobile:h-auto'
                                 )}>
                                     <div className={cn(
                                         'relative w-full h-[35.7rem] min-h-[35.7rem] rounded-[2rem] overflow-hidden',
@@ -126,14 +127,23 @@ export default function BlogSection() {
                                                 <span className="text-regal-orange">Деталі</span>
                                             </Button>
                                         </div>
-                                        <CircleArrowRight strokeWidth={'.1rem'} className="w-[3.9rem] h-[3.9rem] max-tablet:hidden" />
+                                        <CircleArrowRight strokeWidth={'.1rem'} className="w-[3.9rem] h-[3.9rem]  transition-all duration-300 ease-in-out hover:scale-[1.2] hover:text-regal-orange max-tablet:hidden" />
                                     </div>
                                 </Link>
                             )
                         })
                     }
                 </div>
-                {isBtn ? <Button variant='outline_orange' className="mx-auto text-regal-orange mt-[5rem]" onClick={handleShowMore}>Показати всі</Button> : null}
+                {
+                    isBtn ? <Button
+                        variant='outline_orange'
+                        onClick={handleShowMore}
+                        className="mx-auto text-regal-orange mt-[5rem] hover:bg-regal-orange hover:text-regal-white hover:scale-[1.05]"
+                    >
+                        Показати всі
+                    </Button> :
+                        null
+                }
 
             </Container>
         </Section>

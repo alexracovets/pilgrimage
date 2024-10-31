@@ -2,9 +2,9 @@ import { create } from 'zustand';
 import { immer } from 'zustand/middleware/immer';
 
 const useMainSlider = create(immer((set) => ({
-    currentSlide: 1,
-    prevSlider: 0,
-    lengthSlider: 0,
+    currentSlide: 0,
+    prevSlider: 8,
+    lengthSlider: 9,
     setCurrentSlide: (value) => set((state) => {
         state.currentSlide = value;
         if (value === 0) {

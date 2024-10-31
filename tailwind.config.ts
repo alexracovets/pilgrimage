@@ -28,6 +28,10 @@ const config: Config = {
 			objectPosition: {
 				'afon': '-13rem -16rem',
 			},
+			boxShadow: {
+				'card': '0 0 .5rem .1rem #3e3d3a59',
+				'cardHover':'0 0 1rem 0.5rem #3e3d3a59'
+			}
 		}
 	},
 	plugins: [tailwindcssAnimate],

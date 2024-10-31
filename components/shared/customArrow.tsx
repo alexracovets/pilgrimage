@@ -4,14 +4,16 @@ import React from 'react';
 interface ArrowSvgProps {
     color?: string;
     className?: string;
+    hover?: boolean;
 }
 
-const customArrow: React.FC<ArrowSvgProps> = ({ color = 'white', className }) => {
+const customArrow: React.FC<ArrowSvgProps> = ({ color = 'white', className, hover }) => {
     return (
         <div className={cn(
-            'w-[6.3rem] h-[2rem] mr-[1rem]',
+            'w-[6.3rem] h-[2rem] mr-[1rem] transition-all duration-300 ease-out translate-x-0 opacity-1',
             'max-tablet:w-[3rem] max-tablet:h-[1rem] max-tablet:mr-[.6rem]',
             'max-mobile:w-[3.3rem] max-mobile:h-[1.5rem] max-mobile:mr-[1rem]',
+            hover ? 'translate-x-[2rem] opacity-0' : '',
             className
         )}>
             <svg

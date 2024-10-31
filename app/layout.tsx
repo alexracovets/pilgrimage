@@ -4,7 +4,6 @@ import type { Metadata } from "next";
 import { CheckIsMobile } from '@/tools/checkIsMobile';
 import { Header } from '@/components/shared/header';
 import { Footer } from '@/components/shared/footer';
-import { Scroll } from '@/components/shared/scroll';
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -31,14 +30,12 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="ua">
       <body className={`${oswald.variable} ${imb.variable}`}>
-        <Scroll>
-          <Header />
-          <main>
-            {children}
-          </main>
-          <Footer />
-          <CheckIsMobile />
-        </Scroll>
+        <Header />
+        <main>
+          {children}
+        </main>
+        <Footer />
+        <CheckIsMobile />
       </body>
     </html>
   );

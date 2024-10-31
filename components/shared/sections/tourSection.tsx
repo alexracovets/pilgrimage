@@ -46,12 +46,13 @@ export default function TourSection() {
                 )}>
                     Обирай свій тур
                 </h2>
-                <div className="flex flex-wrap justify-start gap-x-[1rem] gap-y-[1.5rem]">
+                <div className="flex flex-wrap justify-start gap-x-[1rem] gap-y-[1.6rem]">
                     {
                         dataTours.slice(0, activeItems).map((card, index) => {
                             return (
                                 <Link href={`/tours/${card.page}`} key={index}>
                                     <div className={cn(
+                                        'relative transition-all duration-300 ease-in-out bg-regal-white shadow-card hover:shadow-cardHover hover:z-[1] hover:scale-[1.05]',
                                         'flex flex-col justify-start items-start w-[34.2rem] border-regal-gray border-[0.2rem] rounded-[2rem] cursor-pointer',
                                         'max-tablet:w-[33rem]',
                                         'max-mobile:w-[28rem]'
@@ -64,7 +65,7 @@ export default function TourSection() {
                                             <p className="text-[1.6rem] mb-[2.6rem]">{card.tourName}</p>
                                             <div className="flex justify-between items-center w-full">
                                                 <Price className="uppercase">{card.price}</Price>
-                                                <CircleArrowRight strokeWidth={'.1rem'} className="w-[3.9rem] h-[3.9rem]" />
+                                                <CircleArrowRight strokeWidth={'.1rem'} className="w-[3.9rem] h-[3.9rem] transition-all duration-300 ease-in-out hover:scale-[1.2] hover:text-regal-orange" />
                                             </div>
                                         </div>
                                     </div>
@@ -73,7 +74,16 @@ export default function TourSection() {
                         })
                     }
                 </div>
-                {isBtn ? <Button variant='outline_orange' className="mx-auto text-regal-orange mt-[5rem]" onClick={handleShowMore}>Показати всі</Button> : null}
+                {
+                    isBtn ? <Button
+                        variant='outline_orange'
+                        onClick={handleShowMore}
+                        className="mx-auto text-regal-orange mt-[5rem] hover:bg-regal-orange hover:text-regal-white hover:scale-[1.05]"
+                    >
+                        Показати всі
+                    </Button> :
+                        null
+                }
             </Container>
         </Section>
     );
