@@ -1,6 +1,8 @@
 import { Oswald, IBM_Plex_Sans } from 'next/font/google';
 import type { Metadata } from "next";
+import { Suspense } from 'react';
 
+import { FacebookPixelEvents } from '@/components/shared/pixel-events';
 import { CheckIsMobile } from '@/tools/checkIsMobile';
 import { Header } from '@/components/shared/header';
 import { Footer } from '@/components/shared/footer';
@@ -38,6 +40,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         </main>
         <Footer />
         <CheckIsMobile />
+        <Suspense fallback={null}>
+          <FacebookPixelEvents />
+        </Suspense>
       </body>
     </html>
   );
