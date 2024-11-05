@@ -31,6 +31,7 @@ export default function MainSection() {
 
   return (
     <Section
+      id='start'
       ref={sectionRef}
       className={cn(
         'h-[100dvh] m-0 max-tablet:m-0 pt-[10rem]',

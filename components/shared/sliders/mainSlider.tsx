@@ -28,6 +28,7 @@ export const MainSlider: React.FC<Props> = ({ slides }) => {
     const prevSlider = useMainSlider(state => state.prevSlider);
     const isMobile = useIsMobile(state => state.isMobile);
     const [api, setApi] = useState<CarouselApi>();
+    
     const sliderOptions = {
         duration: 60,
         startIndex: 8
@@ -57,7 +58,7 @@ export const MainSlider: React.FC<Props> = ({ slides }) => {
                                 'relative left-0 top-0 w-full h-full pointer-events-none',
                                 'max-mobile:pt-[10rem] max-mobile:px-[2rem]'
                             )}>
-                                <Image src={`/main/bg/${item.page}.jpg`} fill priority alt='bg' className="object-cover" />
+                                <Image src={`/main/bg/${item.page}.jpg`} fill priority alt='bg' className="object-cover brightness-[.9] grayscale-[.2]" />
                                 {isMobile ? <TextSlider slides={slides} /> : null}
                             </CarouselItem>
                         )

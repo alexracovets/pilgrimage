@@ -26,7 +26,7 @@ export const Header: React.FC = () => {
     const isActiveForm = useFormActive(state => state.isActive);
 
     const links = [
-        { href: '/', name: 'Головна', id: 'mainLink' },
+        { href: '/#start', name: 'Головна', id: 'mainLink' },
         { href: '/#about', name: 'Про нас', id: 'aboutLink' },
         { href: '/#tours', name: 'Тури', id: 'toursLink' },
         { href: '/blog', name: 'Блог', id: 'blogLink' },
@@ -173,15 +173,35 @@ export const Header: React.FC = () => {
                         <div className='hidden max-mobile:block cursor:pointer realative z-[10]'>
                             <Hamburger toggled={isMobuleMenu} toggle={setIsMobuleMenu} color="#fff" size={18} />
                         </div>
-
                         <Drawer open={isMobuleMenu} direction='top'>
-                            <DrawerContent>
+                            <DrawerContent className='pointer-events-none'>
                                 <DrawerHeader className='hidden'>
                                     <DrawerTitle></DrawerTitle>
                                     <DrawerDescription></DrawerDescription>
                                 </DrawerHeader>
-                                <div className='w-full h-full bg-regal-orange pointer-events-none'>
-                                    sadsadsa
+                                <div className='relative z-[10] w-full h-full bg-regal-orange flex justify-center items-start flex-col pointer-events-auto gap-y-[3.2rem] px-[2rem] pt-[7rem]'>
+                                    {links.map((link, index) => (
+                                        <Link
+                                            href={link.href}
+                                            key={index}
+                                            passHref
+                                            onClick={(e) => {
+                                                if (link.href.includes('#')) {
+                                                    setIsMobuleMenu(false);
+                                                    handleScroll(e, link.href);
+                                                }
+                                            }}
+                                            id={link.id}
+                                            className={cn(
+                                                'transition-all ease-out duration-300',
+                                                'uppercase text-[2.2rem] font-oswald font-[500] pointer-events-auto text-regal-white',
+                                                'hover:text-regal-black'
+                                            )}
+                                            onMouseEnter={handleMouseEnter}
+                                        >
+                                            {link.name}
+                                        </Link>
+                                    ))}
                                 </div>
                             </DrawerContent>
                         </Drawer>

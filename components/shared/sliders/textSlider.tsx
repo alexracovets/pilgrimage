@@ -12,6 +12,8 @@ import { Price } from "@/components/shared/price";
 import { Button } from "@/components/ui/button";
 import useMainSlider from '@/store/useMainSlider';
 
+import useIsMobile from '@/store/useIsMobile';
+
 interface Slide {
     page: string;
     country: string;
@@ -27,6 +29,7 @@ interface Props {
 
 export const TextSlider: React.FC<Props> = ({ slides }) => {
     const prevSlider = useMainSlider(state => state.prevSlider);
+    const isMobile = useIsMobile(state => state.isMobile);
     const [api, setApi] = useState<CarouselApi>();
     const [isBtnHovered, setIsBtnHovered] = useState(false);
     const sliderOptions = {
@@ -43,7 +46,8 @@ export const TextSlider: React.FC<Props> = ({ slides }) => {
         <Carousel className={cn(
             'w-[52rem]',
             'max-tablet:w-[33.2rem] max-tablet:mr-[2.2rem] max-tablet:mb-[5.8rem]',
-            'max-mobile:w-full max-mobile:m-0'
+            'max-mobile:w-full max-mobile:m-0',
+            isMobile ? '' : 'pointer-events-none'
         )}
             setApi={setApi}
             opts={sliderOptions}
@@ -54,7 +58,8 @@ export const TextSlider: React.FC<Props> = ({ slides }) => {
                     slides.map((item, index) => {
                         return (
                             <CarouselItem key={index} className={cn(
-                                'flex flex-col w-full justify-start items-start pointer-events-none'
+                                'flex flex-col w-full justify-start items-start',
+                                isMobile ? '' : 'pointer-events-none'
                             )}>
                                 <div className={cn(
                                     'text-[2.6rem] text-regal-white mb-[1.8rem] text_shadow',
