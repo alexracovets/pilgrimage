@@ -12,11 +12,13 @@ import { Drawer, DrawerContent, DrawerTitle, DrawerHeader, DrawerDescription } f
 import { Container } from "@/components/shared/container";
 
 import useHeader from '@/store/useHeader';
+import useIsMobile from '@/store/useIsMobile';
 import useFormActive from '@/store/useFormActive';
 
 export const Header: React.FC = () => {
     const menuRef = useRef<HTMLDivElement>(null);
     const [underlineStyles, setUnderlineStyles] = useState({ left: '0px', width: '0px' });
+    const isMobile = useIsMobile(state => state.isMobile);
     const [scrollTarget, setScrollTarget] = useState<string | null>(null);
     const [isMobuleMenu, setIsMobuleMenu] = useState(false);
     const [isBlack, setIsBlack] = useState(false);
@@ -56,6 +58,12 @@ export const Header: React.FC = () => {
             });
         }
     }, [activeLink]);
+
+    useEffect(() => {
+        if (!isMobile) {
+            setIsMobuleMenu(false);
+        }
+    }, [isMobile])
 
     useEffect(() => {
         handleMouseLeave();
