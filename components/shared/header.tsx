@@ -175,7 +175,7 @@ export const Header: React.FC = () => {
                         </div>
 
                         <Drawer open={isMobuleMenu} direction='top'>
-                            <DrawerContent  >
+                            <DrawerContent>
                                 <DrawerHeader className='hidden'>
                                     <DrawerTitle></DrawerTitle>
                                     <DrawerDescription></DrawerDescription>
