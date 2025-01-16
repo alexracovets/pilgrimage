@@ -29,6 +29,7 @@ export const FormModal: React.FC = () => {
     const setIsActive = useFormActive(state => state.setIsActive);
     const [isBtnHovered, setIsBtnHovered] = useState(false);
     const [isBtnActive, setIsBtnActive] = useState(false);
+    const [isResponse, setIsResponse] = useState(true);
 
     const [userForm, setUserForm] = useState<UserForm>({
         name: {
@@ -52,7 +53,7 @@ export const FormModal: React.FC = () => {
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-
+        setIsResponse(true);
         const response = await fetch('/send-mail.php', {
             method: 'POST',
             headers: {
@@ -67,10 +68,18 @@ export const FormModal: React.FC = () => {
         });
 
         if (response.ok) {
-            setIsActive(false);
-            console.log('форма відправлена')
+            setIsResponse(true);
         } else console.log(userForm)
     }
+
+    useEffect(() => {
+        if (isResponse) {
+            setTimeout(() => {
+                setIsActive(false);
+                setIsResponse(false);
+            }, 3000)
+        }
+    }, [isResponse, setIsActive])
 
     return (
         <Drawer open={isActive} direction='top'>
@@ -101,49 +110,68 @@ export const FormModal: React.FC = () => {
                         'max-tablet:px-[3rem]',
                         'max-mobile:w-full max-mobile:pt-[16.2rem] max-tablet:justify-start'
                     )}>
-                        <div className={cn(
-                            'text-[6.6rem] font-[700] mb-[2.6rem]',
-                            'max-tablet:text-[3.2rem] max-tablet:mb-[1.4rem]'
-                        )}>
-                            Введіть ваші контактні дані,
-                        </div>
-                        <div className={cn(
-                            'text-[2.6rem] mb-[5rem]',
-                            'max-tablet:text-[1.2rem] max-tablet:mb-[3rem]'
-                        )}>
-                            і наш менеджер зв&apos;яжеться з Вами
-                        </div>
-                        <form onSubmit={handleSubmit} className={cn(
-                            'flex flex-col w-full pointer-events-auto gap-y-[3rem]',
-                            'max-tablet:gap-y-[1.6rem]'
-                        )}>
-                            <InputForm type='text' name='name' placeholder="Ім'я" setUserForm={setUserForm} userForm={userForm} />
-                            <InputForm type='tel' name='phone' placeholder="+380" setUserForm={setUserForm} userForm={userForm} />
-                            <InputForm type='email' name='email' placeholder='E-mail' setUserForm={setUserForm} userForm={userForm} />
-                            <Button
-                                disabled={!isBtnActive}
-                                onMouseEnter={() => setIsBtnHovered(true)}
-                                onMouseLeave={() => setIsBtnHovered(false)}
-                                variant='outline_orange'
-                                className={cn(
-                                    'flex justify-center items-center mt-[2rem]',
-                                    'max-tablet:mt-[1.4rem]',
-                                    isBtnHovered ? 'bg-regal-orange' : '',
-                                    !isBtnActive ? 'grayscale' : 'grayscale-0'
-                                )}
-                            >
-                                <CustomArrow hover={isBtnHovered} color="#FF6328" />
-                                <span className={cn(
-                                    'transition-all duration-300 ease-in-out',
-                                    isBtnHovered ?
-                                        'text-regal-white translate-x-[-3.15rem] max-tablet:translate-x-[-1.5rem] max-mobile:translate-x-[-1.65rem]'
-                                        :
-                                        'text-regal-orange translate-x-0'
-                                )}>
-                                    Замовити тур
-                                </span>
-                            </Button>
-                        </form>
+                        {
+                            !isResponse ?
+                                <>
+                                    <div className={cn(
+                                        'text-[6.6rem] font-[700] mb-[2.6rem]',
+                                        'max-tablet:text-[3.2rem] max-tablet:mb-[1.4rem]'
+                                    )}>
+                                        Введіть ваші контактні дані,
+                                    </div>
+                                    <div className={cn(
+                                        'text-[2.6rem] mb-[5rem]',
+                                        'max-tablet:text-[1.2rem] max-tablet:mb-[3rem]'
+                                    )}>
+                                        і наш менеджер зв&apos;яжеться з Вами
+                                    </div>
+                                    <form onSubmit={handleSubmit} className={cn(
+                                        'flex flex-col w-full pointer-events-auto gap-y-[3rem]',
+                                        'max-tablet:gap-y-[1.6rem]'
+                                    )}>
+                                        <InputForm type='text' name='name' placeholder="Ім'я" setUserForm={setUserForm} userForm={userForm} />
+                                        <InputForm type='tel' name='phone' placeholder="+380" setUserForm={setUserForm} userForm={userForm} />
+                                        <InputForm type='email' name='email' placeholder='E-mail' setUserForm={setUserForm} userForm={userForm} />
+                                        <Button
+                                            disabled={!isBtnActive}
+                                            onMouseEnter={() => setIsBtnHovered(true)}
+                                            onMouseLeave={() => setIsBtnHovered(false)}
+                                            variant='outline_orange'
+                                            className={cn(
+                                                'flex justify-center items-center mt-[2rem]',
+                                                'max-tablet:mt-[1.4rem]',
+                                                isBtnHovered ? 'bg-regal-orange' : '',
+                                                !isBtnActive ? 'grayscale' : 'grayscale-0'
+                                            )}
+                                        >
+                                            <CustomArrow hover={isBtnHovered} color="#FF6328" />
+                                            <span className={cn(
+                                                'transition-all duration-300 ease-in-out',
+                                                isBtnHovered ?
+                                                    'text-regal-white translate-x-[-3.15rem] max-tablet:translate-x-[-1.5rem] max-mobile:translate-x-[-1.65rem]'
+                                                    :
+                                                    'text-regal-orange translate-x-0'
+                                            )}>
+                                                Замовити тур
+                                            </span>
+                                        </Button>
+                                    </form>
+                                </> :
+                                <>
+                                    <div className={cn(
+                                        'text-[6.6rem] font-[700] mb-[2.6rem] text-center',
+                                        'max-tablet:text-[3.2rem] max-tablet:mb-[1.4rem]'
+                                    )}>
+                                        Дякуємо за заявку!
+                                    </div>
+                                    <div className={cn(
+                                        'text-[2.6rem] mb-[5rem] text-center',
+                                        'max-tablet:text-[1.2rem] max-tablet:mb-[3rem]'
+                                    )}>
+                                        Наш менеджер невдовзі зв&apos;яжеться з Вами
+                                    </div>
+                                </>
+                        }
                     </div>
                 </div>
             </DrawerContent>
