@@ -29,7 +29,7 @@ export const FormModal: React.FC = () => {
     const setIsActive = useFormActive(state => state.setIsActive);
     const [isBtnHovered, setIsBtnHovered] = useState(false);
     const [isBtnActive, setIsBtnActive] = useState(false);
-    const [isResponse, setIsResponse] = useState(true);
+    const [isResponse, setIsResponse] = useState(false);
 
     const [userForm, setUserForm] = useState<UserForm>({
         name: {
@@ -53,7 +53,6 @@ export const FormModal: React.FC = () => {
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        setIsResponse(true);
         const response = await fetch('/send-mail.php', {
             method: 'POST',
             headers: {
@@ -77,8 +76,8 @@ export const FormModal: React.FC = () => {
             setTimeout(() => {
                 setIsActive(false);
                 setIsResponse(false);
-            }, 3000)
-        }
+            }, 3000);
+        };
     }, [isResponse, setIsActive])
 
     return (
