@@ -33,7 +33,7 @@ const dataBlog = [
         data: '4 січня 2024 року',
         title: 'Перша україномовна Келія на Святій Горі Афон',
         short_description: 'Наразі під егідою Православної Церкви України за участю Паломницького Центру ПЦУ триває збір пожертв на відбудову першої україномовної Келії на Святій Горі Афон.',
-        description: 'Наразі під егідою <a href="https://ukraine-athos.com.ua/#about-3">Православної Церкви України</a> за участю Паломницького Центру ПЦУ триває збір пожертв на відбудову першої україномовної Келії на Святій Горі Афон.',
+        description: 'Наразі під егідою <a href="https://ukraine-athos.com.ua/#about-3" target="_blank" rel="nofollow">Православної Церкви України</a> за участю Паломницького Центру ПЦУ триває збір пожертв на відбудову першої україномовної Келії на Святій Горі Афон.',
         image: 'ua_afon.jpg',
         info: {
             name: 'Дорогі друзі! Брати і сестри!',
@@ -42,7 +42,7 @@ const dataBlog = [
             content: [
                 {
                     type: 'text',
-                    value: 'Наразі під егідою <a href="https://ukraine-athos.com.ua/#about-3">Православної Церкви України</a> за участю Паломницького Центру ПЦУ триває збір пожертв на відбудову першої україномовної Келії на Святій Горі Афон. Ознайомитись із проєктом ви можете <a href="https://ukraine-athos.com.ua/">тут</a>. Відбудована Келія прийматиме громадян України, зокрема українських воїнів, а також паломників з усього світу – в ім’я єднання, зцілення та наповнення духовною силою.'
+                    value: 'Наразі під егідою <a href="https://ukraine-athos.com.ua/#about-3" target="_blank" rel="nofollow">Православної Церкви України</a> за участю Паломницького Центру ПЦУ триває збір пожертв на відбудову першої україномовної Келії на Святій Горі Афон. Ознайомитись із проєктом ви можете <a href="https://ukraine-athos.com.ua/" target="_blank" rel="nofollow">тут</a>. Відбудована Келія прийматиме громадян України, зокрема українських воїнів, а також паломників з усього світу – в ім’я єднання, зцілення та наповнення духовною силою.'
                 },
                 {
                     type: 'text',
@@ -50,7 +50,7 @@ const dataBlog = [
                 },
                 {
                     type: 'text',
-                    value: 'Долучайтеся до відбудови Святої Келії пожертвами <a href="https://next.privat24.ua/payments/form/%7B%22token%22:%22c433617b-62d7-41e0-a3c9-9fa7d08153b7%22%7D">тут</a>, <a href="https://www.pilgrimage.com.ua/wp-content/uploads/2023/05/d0d8548a-c1c4-4396-8794-898e5aeacb2f.pdf">тут</a> або репостом у соціальних мережах!'
+                    value: 'Долучайтеся до відбудови Святої Келії пожертвами <a href="https://next.privat24.ua/payments/form/%7B%22token%22:%22c433617b-62d7-41e0-a3c9-9fa7d08153b7%22%7D" target="_blank" rel="nofollow">тут</a>, або репостом у соціальних мережах!'
                 },
                 {
                     type: 'text',
@@ -146,7 +146,7 @@ const dataBlog = [
                 },
                 {
                     type: 'text',
-                    value: 'Приєднатися до групи можна за посиланням: <a href="https://invite.viber.com/?g2=AQACjVUnXExjdU%2FmXYOfIyh58KGEAuS5RFjGGM%2BKPn4JDyjj91BUDP5YZdT%2FvnBn">Viber</a>'
+                    value: 'Приєднатися до групи можна за посиланням: <a href="https://invite.viber.com/?g2=AQACjVUnXExjdU%2FmXYOfIyh58KGEAuS5RFjGGM%2BKPn4JDyjj91BUDP5YZdT%2FvnBn" target="_blank" rel="nofollow">Viber</a>'
                 },
             ]
         }
